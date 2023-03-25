@@ -21,9 +21,12 @@ const typeDefs = gql`
     _id: ID!
     bio: String
     skills: [Skill]
+    interests: [Interest]
     avatar: String
+    location: String
+    websites: [Website]
     user: User
-    friendsList: User
+    friendsList: [User]
   }
 
   type Post {
