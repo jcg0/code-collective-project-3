@@ -15,6 +15,10 @@ const profileSchema = new Schema({
     type: String,
     trim: true,
   },
+  user: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User', 
+  },
   friendsList: [userSchema]
 });
 
