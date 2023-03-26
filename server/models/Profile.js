@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const profileSchema = new Schema({
   bio: {
@@ -33,13 +33,13 @@ const profileSchema = new Schema({
       , 'URL address must begin with https://']
     }
   ],
-  user: {
-    type: Schema.Types.ObjectId, 
-    ref: 'User', 
-  },
-  friendsList: [userSchema]
+  // user: {
+  //   type: Schema.Types.ObjectId, 
+  //   ref: 'User', 
+  // },
+  // friendsList: [userSchema]
 });
 
-const Profile = model('Profile', profileSchema);
+// const Profile = model('Profile', profileSchema);
 
-module.exports = Profile;
+module.exports = profileSchema;
