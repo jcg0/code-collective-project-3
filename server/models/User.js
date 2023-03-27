@@ -31,21 +31,20 @@ const userSchema = new Schema({
     // required: true, 
     trim: true,
   }, 
-  profile: [profileSchema],
-  
-  
-  
-  // {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Profile',
-  //   // required: true
-  // }
   posts: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Post',
     }
   ],
+  profile: [profileSchema],
+  
+  // {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Profile',
+  //   // required: true
+  // }
+
   // friendsList: [userSchema]
 });
 
