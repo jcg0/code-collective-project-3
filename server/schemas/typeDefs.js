@@ -2,14 +2,14 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type User {
-    _id: ID!
-    username: String!
-    email: String!
-    password: String! 
+    _id: ID
+    username: String
+    email: String
+    password: String
     firstName: String
     lastName: String
     profile: [Profile]
-    posts: [Post]
+    posts: [Post]!
     # friendsList: [User]
   }
 
@@ -26,11 +26,18 @@ const typeDefs = gql`
   }
 
   type Post {
-    _id: ID!
+    _id: ID
     postContent: String
-    postAuthor: User
+    postAuthor: String
     createdAt: String
-    comments: [String]!
+    comments: [Comment]!
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    commentAuthor: String
+    createdAt: String
   }
 
   type Auth {
@@ -44,7 +51,7 @@ const typeDefs = gql`
     me: User
     getAllProfiles: [Profile]!
     getProfileById(profileId: ID!): Profile
-    posts: [Post]!
+    posts(username: String): [Post]!
     userPosts(username: String!): [Post]!
     # friendsList: [User]!
     # post(postId: ID!): Post
@@ -70,16 +77,16 @@ const typeDefs = gql`
       websites: [String]!,
       location: String!
     ): User
-    # addPost(postContent: String!, postAuthor: String!): Post
-    # updatePost(postId: ID!, postAuthor: String!, postContent: String!): Post
-    # removePost(postId: ID!): Post
-    # addComment(
-    #   postId: ID!, 
-    #   commentText: String!
-    #   commentAuthor: String!
-    # ): Comment
+    addPost(postContent: String!): Post
+    updatePost(postContent: String!): Post
+    removePost(postId: ID!): Post
+    addComment(
+      postId: ID!, 
+      commentText: String!
+      # commentAuthor: String!
+    ): Post
     # updateComment(commendId: ID!): Comment
-    # removeComment(postId: ID!, commentId: ID!): Post
+    removeComment(postId: ID!, commentId: ID!): Post
     # addFriend(userId: ID!): User
     # removeFriend(userId: ID!): User
   }
