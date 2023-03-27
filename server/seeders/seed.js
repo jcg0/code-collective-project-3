@@ -25,7 +25,6 @@ db.once('open', async () => {
           },
         },
       );
-      console.log(user); 
     }
   } catch (err) {
     console.error(err);
