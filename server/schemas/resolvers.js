@@ -168,25 +168,25 @@ const resolvers = {
       throw new AuthenticationError('Please login to add a comment.');
     },
 
-    // updateComment: async (parent, { postId, id, commentText }, context) => {
-    //   console.log(context.user)
-    //   if (context.user) {
-    //     // he current code below isnt working 100% correctly and will need to be fixed.
-    //     // you have to send the mutation twice for the request to send and the post content to change
-    //     const comment = await Post.findOneAndUpdate(
-    //       { _id: postId },
-    //       { comments. }, 
-    //       { new: true });
+    updateComment: async (parent, { postId, commentText }, context) => {
+      console.log(context.user)
+      if (context.user) {
+        // TODO Update by commentId rather than postId
+        // Only able to update a single comment, need to figure out how access commentId since it is a subdocument of Post.
+        const comment = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $set: { comments: { commentText, commentAuthor: context.user.username } } }, 
+          { new: true });
 
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $set: { commentText } },
-    //     );
-    //     console.log(comment)
-    //     return comment
-    //   }
-    //   throw new AuthenticationError('Please log in to update a post')
-    // },
+        // await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $set: { commentText } },
+        // );
+        console.log(comment)
+        return comment
+      }
+      throw new AuthenticationError('Please log in to update a post')
+    },
 
     removeComment: async (parent, { postId, commentId}, context) => {
       if (context.user) {
