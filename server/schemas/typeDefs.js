@@ -78,14 +78,14 @@ const typeDefs = gql`
       location: String!
     ): Profile
     addPost(postContent: String!): Post
-    updatePost(postContent: String! postId: ID!): Post
+    updatePost(id: ID!, postContent: String!): Post
     removePost(postId: ID!): Post
     addComment(
       postId: ID!, 
       commentText: String!
       # commentAuthor: String!
     ): Post
-    # updateComment(commendId: ID!): Comment
+    updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     # addFriend(userId: ID!): User
     # removeFriend(userId: ID!): User

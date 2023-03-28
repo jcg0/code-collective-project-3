@@ -35,11 +35,18 @@ const userSchema = new Schema({
       ref: 'Post',
     }
   ],
-  profile: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Profile',
-    // required: true
-  }]
+  profile: [
+    {
+      type: Schema.Types.ObjectId, 
+      ref: 'Profile', 
+    }
+  ],
+  
+  // {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Profile',
+  //   // required: true
+  // }
 
   // friendsList: [userSchema]
 });
