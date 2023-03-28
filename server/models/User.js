@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const profileSchema = require('./Profile')
-
 const userSchema = new Schema({
   username: {
     type: String,
@@ -37,13 +35,11 @@ const userSchema = new Schema({
       ref: 'Post',
     }
   ],
-  profile: [profileSchema],
-  
-  // {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Profile',
-  //   // required: true
-  // }
+  profile: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Profile',
+    // required: true
+  }]
 
   // friendsList: [userSchema]
 });
