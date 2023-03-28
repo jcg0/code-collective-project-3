@@ -8,17 +8,27 @@ export const QUERY_USER = gql`
       email
       profiles {
         _id
-        thoughtText
-        createdAt
+        bio
+        skillsinterests
+        avatar
+        websites
+        location
       }
       posts {
-        
+        _id
+        postContent
+        postAuthor
+        createdAt
+        comments {
+          _id
+          commentText
+          commentAuthor
+          createdAt
+        }
       }
     }
   }
 `;
-
-
 
 export const QUERY_ME = gql`
   query me {
@@ -26,6 +36,47 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      profiles {
+        _id
+        bio
+        skillsinterests
+        avatar
+        websites
+        location
+      }
+      posts {
+        _id
+        postContent
+        postAuthor
+        createdAt
+        comments {
+          _id
+          commentText
+          commentAuthor
+          createdAt
+        }
+      }
     }
   }
 `;
+
+export const QUERY_POSTS = gql`
+  query Query($username: String!) {
+    posts(username: $username) {
+    _id
+    postContent
+    postAuthor
+    createdAt
+    comments {
+      _id
+      commentText
+      commentAuthor
+      createdAt
+    }
+  }
+}
+`;
+
+export const QUERY_USER_POSTS = gql`
+  query Query()
+`

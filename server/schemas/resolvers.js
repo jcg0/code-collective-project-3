@@ -29,18 +29,19 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to see profiles.')
     },
-    posts: async (parent, {username}, context) => {
+    userPosts: async (parent, {postAuthor}, context) => {
       if (context.user) {
-        const params = username ? username : {}
+        const params = postAuthor ? {postAuthor} : {}
         return Post.find(params)
       }
       throw new AuthenticationError('Please log in to see posts');
     },
-    userPosts: async (parent, { postAuthor }, context) => {
+    posts: async (parent, args, context) => {
       if (context.user) {
-        return Post.find({ postAuthor });
+        return Post.find();
       }
     },
+
     // friendsList: async (parent, args, context) => {
 
     // }
