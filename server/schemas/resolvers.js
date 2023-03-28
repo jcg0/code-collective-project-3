@@ -6,8 +6,8 @@ const resolvers = {
   Query: {
     users: async () => {
       return User.find().populate('posts').populate('profile');
-    }, 
 
+    }, 
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('posts').populate('profile');;
     },
@@ -17,35 +17,6 @@ const resolvers = {
           return User.findOne({ _id: context.user._id }).populate('posts').populate('profile');
       }
       throw new AuthenticationError('Please log in to use this feature.');
-    },
-
-    getAllProfiles: async (parent, { username }, context) => {
-      if (context.user) {
-        const params = username ? {username} : {}
-        return Profile.find(params)
-      }
-      throw new AuthenticationError('Please log in to see profiles.')
-    },
-
-    getProfileById: async (parent, { profileId }, context) => {
-      if (context.user) {
-        return Profile.findOne({ _id: profileId })
-      }
-      throw new AuthenticationError('Please log in to see profiles.')
-    },
-
-    posts: async (parent, {username}, context) => {
-      if (context.user) {
-        const params = username ? username : {}
-        return Post.find(params)
-      }
-      throw new AuthenticationError('Please log in to see posts');
-    },
-
-    userPosts: async (parent, { postAuthor }, context) => {
-      if (context.user) {
-        return Post.find({ postAuthor });
-      }
     },
     // friendsList: async (parent, args, context) => {
 
@@ -79,19 +50,18 @@ const resolvers = {
 
     updateProfile: async (parent, { bio, skills, interests, avatar, websites, location }, context) => {
       if (context.user) {
+        const profile = await Profile.create({
+          bio, skills, interests, avatar, websites, location
+        });
         // console.log(profile)
-        return User.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id: context.user._id },
-          {
-            $set: {
-              profile: { bio, skills, interests, avatar, websites, location }
-            }
-          },
-          {
-            new: true
-          },
+          { $set: { profile: profile._id } },
+          { new: true },
         )
         .populate('profile');
+
+        return profile
       }
       throw new AuthenticationError('Please log in to update profile.');
     },
@@ -125,7 +95,7 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $set: { postContent } },
+          { $set: { posts: post._id } },
         );
           console.log(post)
         return post
@@ -150,6 +120,7 @@ const resolvers = {
       throw new AuthenticationError('Please log in to delete a post');
     },
 
+
     addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
@@ -167,6 +138,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Please login to add a comment.');
     },
+
 
     updateComment: async (parent, { postId, commentId, commentText }, context) => {
       console.log(context.user)
@@ -204,7 +176,7 @@ const resolvers = {
         );
       }
       throw new AuthenticationError('Please login to delete a comment.')
-    }
+    },
   },
 };
 

@@ -49,10 +49,10 @@ const typeDefs = gql`
     users: [User]!
     user(username: String!): User
     me: User
-    getAllProfiles: [Profile]!
-    getProfileById(profileId: ID!): Profile
-    posts(username: String): [Post]!
-    userPosts(username: String!): [Post]!
+    getAllProfiles(username: String!): [Profile]!
+    getProfileById(profileId: ID!): [Profile]
+    userPosts(postAuthor: String!): [Post]!
+    posts: [Post]!
     # friendsList: [User]!
     # post(postId: ID!): Post
   }
@@ -76,7 +76,7 @@ const typeDefs = gql`
       avatar: String!,
       websites: [String]!,
       location: String!
-    ): User
+    ): Profile
     addPost(postContent: String!): Post
     updatePost(id: ID!, postContent: String!): Post
     removePost(postId: ID!): Post

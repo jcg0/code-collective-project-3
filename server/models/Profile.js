@@ -33,13 +33,9 @@ const profileSchema = new Schema({
       , 'URL address must begin with https://']
     }
   ],
-  // user: {
-  //   type: Schema.Types.ObjectId, 
-  //   ref: 'User', 
-  // },
   // friendsList: [userSchema]
 });
 
 const Profile = model('Profile', profileSchema);
 
-module.exports = profileSchema;
+module.exports = Profile;
