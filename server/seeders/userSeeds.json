@@ -4,50 +4,20 @@
         "email": "batman@code-collective.com.com", 
         "password": "Password01", 
         "firstName": "Wayne", 
-        "lastName": "Bruce", 
-        "profile": [
-            {
-                "bio": "In the name of my murdered parents, I wage eternal war on the criminals of Gotham City. I am vengeance. I am the night. I am Batman.", 
-                "skills": ["Bring rich", "Martial arts"], 
-                "interests": ["Fighting crime", "Rachel"], 
-                "avatar": "TBD", 
-                "location": "Gotham City", 
-                "websites": ["https://www.dc.com/characters/batman" ]
-            }
-        ]
+        "lastName": "Bruce"
     }, 
     {
         "username": "Superman", 
         "email": "superman@code-collective.com",
         "password": "Password02", 
         "firstName": "Clark", 
-        "lastName": "Kent", 
-        "profile": [
-            {
-                "bio": "Faster than a speeding bullet, more powerful than a locomotive… The Man of Steel fights a never-ending battle for truth, justice, and the American way.", 
-                "skills": ["Super strength", "Heat vision", "Freeze breath"], 
-                "interests": ["Lois Lane", "Being amazing"], 
-                "avatar": "TBD", 
-                "location": "Metropolis", 
-                "websites": ["https://www.dc.com/characters/superman" ]
-            }
-        ]
+        "lastName": "Kent"
     }, 
     {
         "username": "Wonderwoman", 
         "email": "wonderwoman@code-collective.com.com", 
         "password": "Password03", 
         "firstName": "Diana", 
-        "lastName": "Prince", 
-        "profile": [
-            {
-                "bio": "Beautiful as Aphrodite, wise as Athena, swifter than Hermes, and stronger than Hercules, Princess Diana of Themyscira fights for peace in Man's World.", 
-                "skills": ["Super strength", "Agility", "Healing factor"], 
-                "interests": ["World peace", "Fighting injustice"], 
-                "avatar": "TBD", 
-                "location": "Human world", 
-                "websites": ["https://www.dc.com/characters/wonder-woman" ]
-            }
-        ]
+        "lastName": "Prince"
     }
 ]
