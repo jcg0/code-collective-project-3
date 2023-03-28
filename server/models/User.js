@@ -37,7 +37,12 @@ const userSchema = new Schema({
       ref: 'Post',
     }
   ],
-  profile: [profileSchema],
+  profile: [
+    {
+      type: Schema.Types.ObjectId, 
+      ref: 'Profile', 
+    }
+  ],
   
   // {
   //   type: Schema.Types.ObjectId,

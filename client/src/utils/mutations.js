@@ -119,7 +119,26 @@ export const ADD_COMMENT = gql`
   }
 `;
 
-export const UPDATE_COMMENT = gql``;
+export const UPDATE_COMMENT = gql`
+  mutation UpdateComment($postId: ID!, $commentId: ID!, $commentText: String!) {
+    updateComment(
+      postId: $postId
+      commentId: $commentId
+      commentText: $commentText
+    ) {
+      _id
+      postContent
+      postAuthor
+      createdAt
+      comments {
+        _id
+        commentText
+        commentAuthor
+        createdAt
+      }
+    }
+  }
+`;
 
 export const REMOVE_COMMENT = gql`
   mutation RemoveComment($postId: ID!, $commentId: ID!) {
@@ -137,4 +156,3 @@ export const REMOVE_COMMENT = gql`
 // export const REMOVE_FRIEND = gql`
 
 // `;
-

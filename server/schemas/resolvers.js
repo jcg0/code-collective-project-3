@@ -168,14 +168,14 @@ const resolvers = {
       throw new AuthenticationError('Please login to add a comment.');
     },
 
-    updateComment: async (parent, { postId, commentText }, context) => {
+    updateComment: async (parent, { postId, commentId, commentText }, context) => {
       console.log(context.user)
       if (context.user) {
         // TODO Update by commentId rather than postId
         // Only able to update a single comment, need to figure out how access commentId since it is a subdocument of Post.
         const comment = await Post.findOneAndUpdate(
-          { _id: postId },
-          { $set: { comments: { commentText, commentAuthor: context.user.username } } }, 
+          { _id: postId, 'comments._id': commentId },
+          { $set: { 'comments.$.commentText': commentText } }, 
           { new: true });
 
         // await User.findOneAndUpdate(
