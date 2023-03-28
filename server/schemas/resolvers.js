@@ -6,16 +6,19 @@ const resolvers = {
   Query: {
     users: async () => {
       return User.find().populate('posts').populate('profile');
-    },
+    }, 
+
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('posts').populate('profile');;
     },
+
     me: async (parent, args, context) => {
       if (context.user) {
           return User.findOne({ _id: context.user._id }).populate('posts').populate('profile');
       }
       throw new AuthenticationError('Please log in to use this feature.');
     },
+
     getAllProfiles: async (parent, { username }, context) => {
       if (context.user) {
         const params = username ? {username} : {}
@@ -23,12 +26,14 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to see profiles.')
     },
+
     getProfileById: async (parent, { profileId }, context) => {
       if (context.user) {
         return Profile.findOne({ _id: profileId })
       }
       throw new AuthenticationError('Please log in to see profiles.')
     },
+
     posts: async (parent, {username}, context) => {
       if (context.user) {
         const params = username ? username : {}
@@ -36,6 +41,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to see posts');
     },
+
     userPosts: async (parent, { postAuthor }, context) => {
       if (context.user) {
         return Post.find({ postAuthor });
@@ -52,6 +58,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -69,6 +76,7 @@ const resolvers = {
 
       return { token, user };
     },
+
     updateProfile: async (parent, { bio, skills, interests, avatar, websites, location }, context) => {
       if (context.user) {
         // console.log(profile)
@@ -87,6 +95,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to update profile.');
     },
+
     addPost: async (parent, { postContent }, context) => {
       // console.log(context.user)
       if (context.user) {
@@ -105,15 +114,14 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to create a post.');
     },
-    updatePost: async (parent, { postContent }, context) => {
+
+    updatePost: async (parent, { id, postContent }, context) => {
       console.log(context.user)
       if (context.user) {
-        // he current code below isnt working 100% correctly and will need to be fixed.
-        // you have to send the mutation twice for the request to send and the post content to change
-        const post = await Post.findOneAndUpdate({
-          postContent,
-          postAuthor: context.user.username,
-        });
+        const post = await Post.findOneAndUpdate(
+          { _id: id }, 
+          { postContent }, 
+          { new: true });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
@@ -124,6 +132,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to update a post')
     },
+
     removePost: async (parent, { postId }, context) => {
       if (context.user) {
         const post = await Post.findOneAndDelete({
@@ -140,7 +149,8 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to delete a post');
     },
-    addComment: async (parent, {postId, commentText }, context) => {
+
+    addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
           { _id: postId},
@@ -157,6 +167,27 @@ const resolvers = {
       }
       throw new AuthenticationError('Please login to add a comment.');
     },
+
+    updateComment: async (parent, { postId, commentText }, context) => {
+      console.log(context.user)
+      if (context.user) {
+        // TODO Update by commentId rather than postId
+        // Only able to update a single comment, need to figure out how access commentId since it is a subdocument of Post.
+        const comment = await Post.findOneAndUpdate(
+          { _id: postId },
+          { $set: { comments: { commentText, commentAuthor: context.user.username } } }, 
+          { new: true });
+
+        // await User.findOneAndUpdate(
+        //   { _id: context.user._id },
+        //   { $set: { commentText } },
+        // );
+        console.log(comment)
+        return comment
+      }
+      throw new AuthenticationError('Please log in to update a post')
+    },
+
     removeComment: async (parent, { postId, commentId}, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
