@@ -85,7 +85,7 @@ const typeDefs = gql`
       commentText: String!
       # commentAuthor: String!
     ): Post
-    updateComment(commentId: ID!, commentText: String!): Post
+    updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     # addFriend(userId: ID!): User
     # removeFriend(userId: ID!): User
