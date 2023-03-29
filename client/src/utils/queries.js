@@ -9,7 +9,8 @@ export const QUERY_USER = gql`
       profiles {
         _id
         bio
-        skillsinterests
+        skills
+        interests
         avatar
         websites
         location

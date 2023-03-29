@@ -18,9 +18,6 @@ const resolvers = {
       }
       throw new AuthenticationError('Please log in to use this feature.');
     },
-    // friendsList: async (parent, args, context) => {
-
-    // }
   },
 
   Mutation: {
@@ -67,7 +64,6 @@ const resolvers = {
     },
 
     addPost: async (parent, { postContent }, context) => {
-      // console.log(context.user)
       if (context.user) {
         const post = await Post.create({
           postContent,
@@ -143,8 +139,7 @@ const resolvers = {
     updateComment: async (parent, { postId, commentId, commentText }, context) => {
       console.log(context.user)
       if (context.user) {
-        // TODO Update by commentId rather than postId
-        // Only able to update a single comment, need to figure out how access commentId since it is a subdocument of Post.
+       
         const comment = await Post.findOneAndUpdate(
           { _id: postId, 'comments._id': commentId },
           { $set: { 'comments.$.commentText': commentText } }, 
@@ -175,7 +170,6 @@ const resolvers = {
     },
 
     addFriend: async (parent, { friendId }, context) => {
-      // console.log(context.user)
       if (context.user) {
 
         const returnUser = await User.findOneAndUpdate(
@@ -191,10 +185,6 @@ const resolvers = {
 
     removeFriend: async (parent, { friendId }, context) => {
       if (context.user) {
-        // const post = await Post.findOneAndDelete({
-        //   _id: postId,
-        //   postAuthor: context.user.username,
-        // });
 
         const returnUser = await User.findOneAndUpdate(
           { _id: context.user._id },

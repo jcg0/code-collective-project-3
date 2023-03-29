@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 
 
 const Home = () => {
-  const { loading, data } = useQuery();
+  // const { loading, data } = useQuery();
 
 
   return (
