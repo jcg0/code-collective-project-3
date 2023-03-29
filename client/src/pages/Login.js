@@ -98,7 +98,6 @@ const Login = (props) => {
                     </div>
                   </form>
                 )}
-
                 {error && (
                   <div className="my-3 p-3 btn btn-error">invalid creds</div>
                 )}
