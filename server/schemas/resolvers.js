@@ -5,16 +5,16 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('posts').populate('profile');
+      return User.find().populate('posts').populate('profile').populate('friendsList');
 
     }, 
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('posts').populate('profile');;
+      return User.findOne({ username }).populate('posts').populate('profile').populate('friendsList');
     },
 
     me: async (parent, args, context) => {
       if (context.user) {
-          return User.findOne({ _id: context.user._id }).populate('posts').populate('profile');
+          return User.findOne({ _id: context.user._id }).populate('posts').populate('profile').populate('friendsList');
       }
       throw new AuthenticationError('Please log in to use this feature.');
     },
@@ -150,10 +150,6 @@ const resolvers = {
           { $set: { 'comments.$.commentText': commentText } }, 
           { new: true });
 
-        // await User.findOneAndUpdate(
-        //   { _id: context.user._id },
-        //   { $set: { commentText } },
-        // );
         console.log(comment)
         return comment
       }
@@ -176,6 +172,38 @@ const resolvers = {
         );
       }
       throw new AuthenticationError('Please login to delete a comment.')
+    },
+
+    addFriend: async (parent, { friendId }, context) => {
+      // console.log(context.user)
+      if (context.user) {
+
+        const returnUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friendsList: friendId } },
+          { new: true, }
+        );
+        
+        return returnUser;
+      }
+      throw new AuthenticationError('Please log in to create a post.');
+    },
+
+    removeFriend: async (parent, { friendId }, context) => {
+      if (context.user) {
+        // const post = await Post.findOneAndDelete({
+        //   _id: postId,
+        //   postAuthor: context.user.username,
+        // });
+
+        const returnUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { friendsList: friendId } }
+        );
+
+        return returnUser;
+      }
+      throw new AuthenticationError('Please log in to delete a post');
     },
   },
 };
