@@ -50,10 +50,10 @@ const typeDefs = gql`
     users: [User]!
     user(username: String!): User
     me: User
-    getAllProfiles(username: String!): [Profile]!
-    getProfileById(profileId: ID!): [Profile]
+    # getAllProfiles(username: String!): [Profile]!
+    # getProfileById(profileId: ID!): [Profile]
     userPosts(postAuthor: String!): [Post]!
-    posts: [Post]!
+    posts: [Post]
     # friendsList: [User]!
     # post(postId: ID!): Post
   }
