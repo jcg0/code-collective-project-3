@@ -42,8 +42,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="bg-red-700 h-screen ">
-          hello
+        <div data-theme="forest" className=" h-screen ">
           <Header />
           <div className="container">
             <Routes>
