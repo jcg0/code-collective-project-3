@@ -1,15 +1,17 @@
 const db = require('../config/connection');
-const { User, Post } = require('../models');
+const { User, Post, Profile } = require('../models');
 const userSeeds = require('./userSeeds.json'); 
 const postSeeds = require('./postSeeds.json'); 
+const profileSeeds = require('./profileSeeds.json'); 
 
-// this set of code can be used in conjuction with a seed.json to seed a database
+// this set of code can be used in conjunction with a seed.json to seed a database
 
 db.once('open', async () => {
   try {
     // Clean database
     await User.deleteMany({});
     await Post.deleteMany({});
+    await Profile.deleteMany({}); 
 
     // Bulk create users
     await User.insertMany(userSeeds); 
@@ -26,6 +28,19 @@ db.once('open', async () => {
         },
       );
     }
+
+    for (let i=0; i < profileSeeds.length; i++) {
+      const { _id, user } = await Profile.create(profileSeeds[i]); 
+      const createdUser = await User.findOneAndUpdate(
+        { username: user }, 
+        {
+          $addToSet: {
+            profile: { _id } 
+          },
+        },
+      );
+    }
+
   } catch (err) {
     console.error(err);
     process.exit(1);

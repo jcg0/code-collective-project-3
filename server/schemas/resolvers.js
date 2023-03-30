@@ -5,22 +5,26 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('posts').populate('profile');
+      return User.find().populate('posts').populate('profile').populate('friendsList');
 
     }, 
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('posts').populate('profile');;
+      return User.findOne({ username }).populate('posts').populate('profile').populate('friendsList');
     },
 
     me: async (parent, args, context) => {
       if (context.user) {
-          return User.findOne({ _id: context.user._id }).populate('posts').populate('profile');
+          return User.findOne({ _id: context.user._id }).populate('posts').populate('profile').populate('friendsList');
       }
       throw new AuthenticationError('Please log in to use this feature.');
     },
-    // friendsList: async (parent, args, context) => {
-
-    // }
+    posts: async (parent, {username}, context) => {
+      if (context.user) {
+        const params = username ? username : {}
+        return Post.find(params)
+      }
+      throw new AuthenticationError('Please log in to see posts');
+    },
   },
 
   Mutation: {
@@ -67,7 +71,6 @@ const resolvers = {
     },
 
     addPost: async (parent, { postContent }, context) => {
-      // console.log(context.user)
       if (context.user) {
         const post = await Post.create({
           postContent,
@@ -143,17 +146,12 @@ const resolvers = {
     updateComment: async (parent, { postId, commentId, commentText }, context) => {
       console.log(context.user)
       if (context.user) {
-        // TODO Update by commentId rather than postId
-        // Only able to update a single comment, need to figure out how access commentId since it is a subdocument of Post.
+       
         const comment = await Post.findOneAndUpdate(
           { _id: postId, 'comments._id': commentId },
           { $set: { 'comments.$.commentText': commentText } }, 
           { new: true });
 
-        // await User.findOneAndUpdate(
-        //   { _id: context.user._id },
-        //   { $set: { commentText } },
-        // );
         console.log(comment)
         return comment
       }
@@ -176,6 +174,33 @@ const resolvers = {
         );
       }
       throw new AuthenticationError('Please login to delete a comment.')
+    },
+
+    addFriend: async (parent, { friendId }, context) => {
+      if (context.user) {
+
+        const returnUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friendsList: friendId } },
+          { new: true, }
+        );
+        
+        return returnUser;
+      }
+      throw new AuthenticationError('Please log in to create a post.');
+    },
+
+    removeFriend: async (parent, { friendId }, context) => {
+      if (context.user) {
+
+        const returnUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { friendsList: friendId } }
+        );
+
+        return returnUser;
+      }
+      throw new AuthenticationError('Please log in to delete a post');
     },
   },
 };

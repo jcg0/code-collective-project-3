@@ -4,8 +4,16 @@ module.exports = {
   theme: {
     extend: {},
   },
-  daisyui: {
-    themes: ["emerald", "forest", "cupcake" ],
-  },
   plugins: [require("daisyui")],
+
+  daisyui: {
+    styled: true,
+    themes: ["garden", "dark", "cupcake" ],
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+    prefix: "",
+    darkTheme: "dark",
+  },
 }

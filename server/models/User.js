@@ -41,14 +41,12 @@ const userSchema = new Schema({
       ref: 'Profile', 
     }
   ],
-  
-  // {
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Profile',
-  //   // required: true
-  // }
-
-  // friendsList: [userSchema]
+  friendsList: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
 });
 
 userSchema.pre('save', async function (next) {

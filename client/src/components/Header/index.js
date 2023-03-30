@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
 const Header = () => {
   const logout = (event) => {
@@ -9,35 +9,62 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Title here</h1>
-          </Link>
-          <p className="m-0">sub header here</p>
-        </div>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-            
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div>
+    <div className="navbar base-100">
+      <div className="flex-1">
+        <p><b>CC</b></p>
       </div>
-    </header>
+      <div className="flex-none gap-2">
+        {Auth.loggedIn() ? (
+          <>
+          <div className="form-control">
+            <input
+              type="text"
+              placeholder="Search"
+              className="input input-bordered"
+            />
+          </div>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a className="justify-between">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a>Profile</a>
+              </li>
+              <li>
+                <a>Friends</a>
+              </li>
+              <li>
+                <a>Chat</a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
+            </ul>
+          </div>
+          </> 
+          ) : (
+          <>
+          <div className="navbar-end">
+            <Link to="/login"><a className="btn">Login</a></Link>
+          </div>
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 

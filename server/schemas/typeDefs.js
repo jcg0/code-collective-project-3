@@ -10,11 +10,12 @@ const typeDefs = gql`
     lastName: String
     profile: [Profile]
     posts: [Post]!
-    # friendsList: [User]
+    friendsList: [User]
   }
 
   type Profile {
     _id: ID!
+    user: String!
     bio: String!
     skills: [String]
     interests: [String]
@@ -49,10 +50,10 @@ const typeDefs = gql`
     users: [User]!
     user(username: String!): User
     me: User
-    getAllProfiles(username: String!): [Profile]!
-    getProfileById(profileId: ID!): [Profile]
+    # getAllProfiles(username: String!): [Profile]!
+    # getProfileById(profileId: ID!): [Profile]
     userPosts(postAuthor: String!): [Post]!
-    posts: [Post]!
+    posts: [Post]
     # friendsList: [User]!
     # post(postId: ID!): Post
   }
@@ -87,8 +88,8 @@ const typeDefs = gql`
     ): Post
     updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
-    # addFriend(userId: ID!): User
-    # removeFriend(userId: ID!): User
+    addFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
   }
 `;
 
