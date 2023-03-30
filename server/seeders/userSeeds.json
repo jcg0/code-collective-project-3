@@ -1,23 +1,17 @@
 [
-    {
-        "username": "Batman", 
-        "email": "batman@code-collective.com.com", 
-        "password": "Password01", 
-        "firstName": "Wayne", 
-        "lastName": "Bruce"
-    }, 
-    {
-        "username": "Superman", 
-        "email": "superman@code-collective.com",
-        "password": "Password02", 
-        "firstName": "Clark", 
-        "lastName": "Kent"
-    }, 
-    {
-        "username": "Wonderwoman", 
-        "email": "wonderwoman@code-collective.com.com", 
-        "password": "Password03", 
-        "firstName": "Diana", 
-        "lastName": "Prince"
-    }
+  {
+    "username": "Batman",
+    "email": "batman@code-collective.com",
+    "password": "password"
+  },
+  {
+    "username": "Superman",
+    "email": "superman@code-collective.com",
+    "password": "password"
+  },
+  {
+    "username": "Wonderwoman",
+    "email": "wonderwoman@code-collective.com",
+    "password": "password"
+  }
 ]
