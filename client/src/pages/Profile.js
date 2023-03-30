@@ -32,7 +32,7 @@ const Profile = () => {
         <h1>{userParam ? `${user.username}'s` : "Your"} profile.</h1>
 
         <div>
-          <ProfileList profiles={user.profile} />
+          <ProfileList profiles={user.profile} loading={loading} />
         </div>
       </div>
     </div>

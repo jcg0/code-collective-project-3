@@ -1,9 +1,71 @@
-import React, { useState } from "react";
-// import Skills from "../Skills";
+import React, { useState, useEffect } from "react";
 
-const ProfileList = ({ profiles, title }) => {
+const ProfileList = ({ profiles, title, loading }) => {
+  const [updateInput, setUpdateInput] = useState("");
+
+  const [profileForm, setProfileForm] = useState({
+    bio: "",
+    avatar: "",
+    skills: "",
+    interests: "",
+    websites: "",
+    location: "",
+  });
+
+  useEffect(() => {
+    // debugger;
+    if (profiles) {
+      setProfileForm({
+        bio: profiles[0].bio,
+        avatar: profiles[0].avatar,
+        skills: profiles[0].skills,
+        interests: profiles[0].interests,
+        websites: profiles[0].websites,
+        location: profiles[0].location,
+      });
+    }
+  }, [loading]);
+
+  const handleInputChange = (e) => {
+    const { target } = e;
+    const inputType = target.name;
+    const inputValue = target.value;
+
+    switch (inputType) {
+      case "bio":
+        setProfileForm(inputValue);
+        break;
+      case "skills":
+        setProfileForm(inputValue);
+        break;
+      case "interests":
+        setProfileForm(inputValue);
+        break;
+      case "location":
+        setProfileForm(inputValue);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    profiles.onSubmit({
+      bio: profiles[0].bio,
+      avatar: profiles[0].avatar,
+      skills: profiles[0].skills,
+      interests: profiles[0].interests,
+      websites: profiles[0].websites,
+      location: profiles[0].location,
+    });
+
+    setProfileForm(handleInputChange);
+  };
+  // debugger;
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <form className="flex flex-col text-center items-center space-y-4">
       <h1>{title}</h1>
       {profiles &&
         profiles.map((profile) => (
@@ -14,30 +76,55 @@ const ProfileList = ({ profiles, title }) => {
               </h1>
               <div className="avatar">
                 <div className="w-24 mask mask-squircle border-2 border-rose-500">
+                  {/* icon for edit */}
+                  <i></i>
                   <img src={profile.avatar} alt="a squricle image" />
                 </div>
               </div>
             </div>
             <div>
-              <h1 className="text-2xl border-2 border-b-green-800">Bio</h1>
+              <h1 className="antialiased text-2xl font-extrabold">Bio</h1>
               <div className="">
-                <p>{profile.bio}</p>
+                <input
+                  name="bio"
+                  type="text"
+                  value={profileForm.bio}
+                  onChange={handleInputChange}
+                />
+                <button
+                  type="button"
+                  onclick={(e) => updateInputChange(e.target.value)}
+                >
+                  update bio
+                </button>
               </div>
             </div>
             <div>
               <h1 className="antialiased text-2xl font-extrabold">Skills</h1>
               <div>
                 <ul>
-                  <li>{profile.skills}</li>
+                  <input
+                    name="skills"
+                    type="text"
+                    value={profileForm.skills}
+                    onChange={handleInputChange}
+                  />
                 </ul>
+                <button>update skills</button>
               </div>
             </div>
             <div>
               <h1 className="antialiased text-2xl font-extrabold">Interests</h1>
               <div>
                 <ul>
-                  <li>{profile.interests}</li>
+                  <input
+                    name="interests"
+                    type="text"
+                    value={profileForm.interests}
+                    onChange={handleInputChange}
+                  />
                 </ul>
+                <button>update interests</button>
               </div>
             </div>
             <div>
@@ -45,6 +132,8 @@ const ProfileList = ({ profiles, title }) => {
               <div>
                 <ul>
                   <li>
+                    {/* icon for edit */}
+                    <i></i>
                     <a href={profile.websites}>{profile.websites}</a>
                   </li>
                 </ul>
@@ -53,12 +142,18 @@ const ProfileList = ({ profiles, title }) => {
             <div>
               <h1 className="antialiased text-2xl font-extrabold">Location</h1>
               <div>
-                <p>{profile.location}</p>
+                <input
+                  name="location"
+                  type="text"
+                  value={profileForm.location}
+                  onChange={handleInputChange}
+                />
               </div>
+              <button>update location</button>
             </div>
           </>
         ))}
-    </div>
+    </form>
   );
 };
 
