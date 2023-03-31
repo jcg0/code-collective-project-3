@@ -11,7 +11,6 @@ const PostForm = () => {
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST, {
-    
     update(cache, { data: { addPost } }) {
       try {
         const { posts } = cache.readQuery({ query: QUERY_POSTS });
@@ -25,22 +24,20 @@ const PostForm = () => {
         console.log("its in the update");
       }
 
-      
       // const { me } = cache.readQuery({ query: QUERY_ME }) ?? { posts:[] };
       // if (me) {
-      //   console.log(me); 
+      //   console.log(me);
       //   cache.writeQuery({
       //     query: QUERY_ME,
       //     data: { me: { ...me, posts: [...me.posts, addPost] } },
       //   });
       // } else {
-      //   console.log(me); 
+      //   console.log(me);
       //   cache.writeQuery({
       //     query: QUERY_ME,
       //     data: { me: { posts: [] } },
       //   });
       // }
-
     },
   });
 
@@ -58,7 +55,6 @@ const PostForm = () => {
       console.log("form submit is the issue");
     }
   };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -69,7 +65,6 @@ const PostForm = () => {
   };
 
   return (
-
     // <div className="card w-screen m-3 bg-base-100 shadow-xl">
     <div className="form-control max-w-xs p-4">
       <h2 className="pb-2">

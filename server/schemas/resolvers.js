@@ -27,18 +27,27 @@ const resolvers = {
       }
       throw new AuthenticationError("Please log in to use this feature.");
     },
-    posts: async (parent, {username}, context) => {
+    posts: async (parent, { username }, context) => {
       if (context.user) {
-        const params = username ? username : {}
-        return Post.find(params)
+        const params = username ? username : {};
+        return Post.find(params);
       }
-      throw new AuthenticationError('Please log in to see posts');
+      throw new AuthenticationError("Please log in to see posts");
     },
   },
 
   Mutation: {
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (
+      parent,
+      { username, email, password, firstName, lastName }
+    ) => {
+      const user = await User.create({
+        username,
+        email,
+        password,
+        firstName,
+        lastName,
+      });
       const token = signToken(user);
       return { token, user };
     },
@@ -63,7 +72,7 @@ const resolvers = {
 
     updateProfile: async (
       parent,
-      { bio, skills, interests, avatar, websites, location },
+      { bio, skills, interests, websites, location },
       context
     ) => {
       if (context.user) {
@@ -71,7 +80,6 @@ const resolvers = {
           bio,
           skills,
           interests,
-          avatar,
           websites,
           location,
         });

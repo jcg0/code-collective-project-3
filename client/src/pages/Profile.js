@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import ProfileList from "../components/ProfileList";
+import Avatar from "../components/Avatar";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
@@ -32,6 +33,7 @@ const Profile = () => {
         <h1 className="text-center text-6xl pt-6">
           {userParam ? `${user.username}'s` : "Your"} profile.
         </h1>
+        <Avatar firstName={user.firstName} lastName={user.lastName} />
         <div>
           <ProfileList profiles={user.profile} loading={loading} />
         </div>
