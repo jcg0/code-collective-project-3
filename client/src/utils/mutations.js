@@ -148,7 +148,7 @@ export const REMOVE_COMMENT = gql`
 export const ADD_FRIEND = gql`
   mutation AddFriend($userID: ID! $username: String!) {
     addFriend(userId: $userId, username: $username ) {
-      _id
+      
       username
     }
 
@@ -158,7 +158,7 @@ export const ADD_FRIEND = gql`
 export const REMOVE_FRIEND = gql`
   mutation RemoveFriend($username: String!) {
     removeFriend(username: $username) {
-      _id
+      
       username
     }
   }
