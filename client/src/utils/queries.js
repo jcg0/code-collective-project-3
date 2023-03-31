@@ -129,3 +129,12 @@ export const QUERY_USER_PROFILE = gql`
     }
   }
 `;
+
+export const QUERY_USER_FRIENDS = gql`
+query Query($username: String!) {
+  user(username: $username) {
+    friendsList {
+      username
+    }
+  }
+}`
