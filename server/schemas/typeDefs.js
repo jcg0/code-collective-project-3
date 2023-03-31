@@ -15,7 +15,6 @@ const typeDefs = gql`
 
   type Profile {
     _id: ID!
-    user: String!
     bio: String!
     skills: [String]
     interests: [String]

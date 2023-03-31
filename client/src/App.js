@@ -43,7 +43,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex flex-col h-screen justify-between min-100-vh">
+        <div>
           <Header />
           <div className="md:container md:mx-auto">
             <Routes>

@@ -29,8 +29,9 @@ const Profile = () => {
   return (
     <div>
       <div>
-        <h1>{userParam ? `${user.username}'s` : "Your"} profile.</h1>
-
+        <h1 className="text-center text-6xl pt-6">
+          {userParam ? `${user.username}'s` : "Your"} profile.
+        </h1>
         <div>
           <ProfileList profiles={user.profile} loading={loading} />
         </div>
