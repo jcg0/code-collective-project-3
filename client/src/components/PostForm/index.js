@@ -44,7 +44,7 @@ const PostForm = () => {
     },
   });
 
-  const handleFormSubmit = async (event) => {
+ const handleFormSubmit = async (event) => {  
     event.preventDefault();
 
     try {
@@ -57,7 +57,7 @@ const PostForm = () => {
       console.error(err);
       console.log("form submit is the issue");
     }
-  };
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;

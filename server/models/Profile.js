@@ -22,10 +22,10 @@ const profileSchema = new Schema({
       trim: true,
     },
   ],
-  avatar: {
-    type: String,
-    trim: true,
-  },
+  // avatar: {
+  //   type: String,
+  //   trim: true,
+  // },
   location: {
     type: String,
     trim: true,
