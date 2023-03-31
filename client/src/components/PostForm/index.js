@@ -69,12 +69,14 @@ const PostForm = () => {
   };
 
   return (
+
     // <div className="card w-screen m-3 bg-base-100 shadow-xl">
     <div className="form-control max-w-xs p-4">
       <h2 className="pb-2">
         <b>What's got your gears going?</b>
       </h2>
       {/* <label className="label">
+
             <span className="label-text">What's got your gears going?</span>
         </label> */}
       {Auth.loggedIn() ? (

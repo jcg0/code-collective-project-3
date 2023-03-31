@@ -29,7 +29,7 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_PROFILE = gql`
-  mutation UpdateProfile(
+  mutation Mutation(
     $bio: String!
     $skills: [String]!
     $interests: [String]!
@@ -45,17 +45,12 @@ export const UPDATE_PROFILE = gql`
       websites: $websites
       location: $location
     ) {
-      username
-      email
-      _id
-      profile {
-        avatar
-        bio
-        interests
-        location
-        skills
-        websites
-      }
+      skills
+      bio
+      interests
+      avatar
+      location
+      websites
     }
   }
 `;
@@ -150,10 +145,21 @@ export const REMOVE_COMMENT = gql`
   }
 `;
 
-// export const ADD_FRIEND = gql`
+export const ADD_FRIEND = gql`
+  mutation AddFriend($userID: ID! $username: String!) {
+    addFriend(userId: $userId, username: $username ) {
+      _id
+      username
+    }
 
-// `;
+  }
+`;
 
-// export const REMOVE_FRIEND = gql`
-
-// `;
+export const REMOVE_FRIEND = gql`
+  mutation RemoveFriend($userId: ID!, $friendID: ID!) {
+    removeFriend(userID: ID, friendId: $friendID) {
+      _id
+      username
+    }
+  }
+`;

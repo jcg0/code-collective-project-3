@@ -1,20 +1,20 @@
-const db = require('../config/connection');
-const { User, Post, Profile } = require('../models');
-const userSeeds = require('./userSeeds.json'); 
-const postSeeds = require('./postSeeds.json'); 
-const profileSeeds = require('./profileSeeds.json'); 
+const db = require("../config/connection");
+const { User, Post, Profile } = require("../models");
+const userSeeds = require("./userSeeds.json");
+const postSeeds = require("./postSeeds.json");
+const profileSeeds = require("./profileSeeds.json");
 
 // this set of code can be used in conjunction with a seed.json to seed a database
 
-db.once('open', async () => {
+db.once("open", async () => {
   try {
     // Clean database
     await User.deleteMany({});
     await Post.deleteMany({});
-    await Profile.deleteMany({}); 
+    await Profile.deleteMany({});
 
     // Bulk create users
-    await User.insertMany(userSeeds); 
+    await User.create(userSeeds);
 
     // Assign posts to users using postAuthor and username as the connecting value
     for (let i = 0; i < postSeeds.length; i++) {
@@ -25,26 +25,25 @@ db.once('open', async () => {
           $addToSet: {
             posts: _id,
           },
-        },
+        }
       );
     }
 
-    for (let i=0; i < profileSeeds.length; i++) {
-      const { _id, user } = await Profile.create(profileSeeds[i]); 
+    for (let i = 0; i < profileSeeds.length; i++) {
+      const { _id, user } = await Profile.create(profileSeeds[i]);
       const createdUser = await User.findOneAndUpdate(
-        { username: user }, 
+        { username: user },
         {
           $addToSet: {
-            profile: { _id } 
+            profile: { _id },
           },
-        },
+        }
       );
     }
-
   } catch (err) {
     console.error(err);
     process.exit(1);
   }
-  console.log('All seeded!!');
+  console.log("All seeded!!");
   process.exit(0);
 });

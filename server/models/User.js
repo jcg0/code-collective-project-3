@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
   username: {
@@ -12,45 +12,47 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    match: [/.+@.+\..+/, 'Must match an email address!'],
+    match: [/.+@.+\..+/, "Must match an email address!"],
   },
   password: {
     type: String,
     required: true,
     minlength: 5,
-  }, 
+  },
   firstName: {
-    type: String, 
+    type: String,
     // required: true,
     trim: true,
-  }, 
+  },
   lastName: {
     type: String,
-    // required: true, 
+    // required: true,
     trim: true,
-  }, 
+  },
   posts: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Post',
-    }
+      ref: "Post",
+    },
   ],
   profile: [
     {
-      type: Schema.Types.ObjectId, 
-      ref: 'Profile', 
-    }
+      type: Schema.Types.ObjectId,
+      ref: "Profile",
+    },
   ],
   friendsList: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
+      ref: "User",
+    },
   ],
+},{
+  toJSON:{virtuals: true}
 });
 
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -61,6 +63,12 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+// Create virtual property that gets friend count amount
+userSchema.virtual('friendCount')
+    .get(function () {
+        return this.friendsList.length;
+    });
 
 const User = model('User', userSchema);
 
