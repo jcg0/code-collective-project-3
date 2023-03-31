@@ -30,10 +30,10 @@ const Friends = ({friendsList}) => {
         <div>
           <div >
             {friendsList &&
-              friendsList.map((friend) => (
-                <div key={friend} className="col-12 col-xl-6">
+              friendsList.map((friendship) => (
+                <div key={friendship} className="col-12 col-xl-6">
                   <ul class="menu bg-base-100 w-56 rounded-box">
-                    <li><a>{friend}</a></li>
+                    <li>{friend}</li>
                   </ul>
                 </div>
               ))}
