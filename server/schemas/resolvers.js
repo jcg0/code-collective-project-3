@@ -242,10 +242,16 @@ const resolvers = {
     },
 
     removeFriend: async (parent, { friendName }, context) => {
+      const findFriend = await User.findOne({
+        username: friendName
+      
+      })
+
       if (context.user) {
-        const returnUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { friendsList: friendId } }
+        const returnUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { $pull: { friendsList: findFriend._id } },
+          {new:true,}
         );
 
         return returnUser;
