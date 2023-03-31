@@ -11,9 +11,9 @@ const ProfileList = ({ profiles, title, loading }) => {
   const [profileForm, setProfileForm] = useState({
     bio: "",
     avatar: "",
-    skills: "",
-    interests: "",
-    websites: "",
+    skills: [],
+    interests: [],
+    websites: [],
     location: "",
   });
 
@@ -21,12 +21,12 @@ const ProfileList = ({ profiles, title, loading }) => {
     // debugger;
     if (profiles) {
       setProfileForm({
-        bio: profiles[0].bio,
-        avatar: profiles[0].avatar,
-        skills: profiles[0].skills,
-        interests: profiles[0].interests,
-        websites: profiles[0].websites,
-        location: profiles[0].location,
+        bio: profiles.bio,
+        avatar: profiles.avatar,
+        skills: profiles.skills,
+        interests: profiles.interests,
+        websites: profiles.websites,
+        location: profiles.location,
       });
     }
   }, [loading]);
@@ -108,93 +108,93 @@ const ProfileList = ({ profiles, title, loading }) => {
       onSubmit={handleFormSubmit}
     >
       <h1>{title}</h1>
-      {profiles &&
-        profiles.map((profile) => (
-          <>
-            <div key={profile._id}>
-              <h1 className="antialiased text-2xl font-extrabold">
-                Profile Picture
-              </h1>
-              <div className="avatar">
-                <div className="w-24 mask mask-squircle border-2 border-rose-500">
-                  {/* icon for edit */}
-                  <i></i>
-                  <img src={profileForm.avatar} alt="a squricle image" />
-                </div>
-              </div>
-            </div>
-            <div key={profile._id}>
-              <label className="antialiased text-2xl font-extrabold">
-                Bio
+
+      <div>
+        <h1 className="antialiased text-2xl font-extrabold">Profile Picture</h1>
+        <div className="avatar">
+          <div className="w-24 mask mask-squircle border-2 border-rose-500">
+            {/* icon for edit */}
+            <i></i>
+            <img src={profileForm.avatar} alt="a squricle image" />
+          </div>
+        </div>
+      </div>
+      <div>
+        <label className="antialiased text-2xl font-extrabold">
+          Bio
+          <input
+            name="bio"
+            type="text"
+            value={profileForm.bio}
+            onChange={handleInputChange}
+            className="input input-ghost w-full max-w-xs custom-profile-input-size"
+          />
+        </label>
+      </div>
+      <div>
+        <label className="antialiased text-2xl font-extrabold">Skills</label>
+        <div>
+          <ul>
+            {profiles.skills &&
+              profiles.skills.map((skills, index) => (
                 <input
-                  name="bio"
+                  key={skills.name}
+                  name="skills"
                   type="text"
-                  value={profileForm.bio}
-                  onChange={handleInputChange}
-                  className="input input-ghost w-full max-w-xs custom-profile-input-size"
-                />
-              </label>
-            </div>
-            <div key={profile._id}>
-              <label className="antialiased text-2xl font-extrabold">
-                Skills
-              </label>
-              <div>
-                <ul>
-                  <input
-                    name="skills"
-                    type="text"
-                    value={profileForm.skills}
-                    onChange={handleInputChange}
-                    className="input input-ghost w-full max-w-xs"
-                  />
-                </ul>
-              </div>
-            </div>
-            <div key={profile._id}>
-              <label className="antialiased text-2xl font-extrabold">
-                Interests
-              </label>
-              <div>
-                <ul>
-                  <input
-                    name="interests"
-                    type="text"
-                    value={profileForm.interests}
-                    onChange={handleInputChange}
-                    className="input input-ghost w-full max-w-xs"
-                  />
-                </ul>
-              </div>
-            </div>
-            <div key={profile._id}>
-              <h1 className="antialiased text-2xl font-extrabold">Links</h1>
-              <div>
-                <ul>
-                  <li>
-                    {/* icon for edit */}
-                    <i></i>
-                    <a href={profileForm.websites}>{profile.websites}</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div key={profile._id}>
-              <label className="antialiased text-2xl font-extrabold">
-                Location
-              </label>
-              <div>
-                <input
-                  name="location"
-                  type="text"
-                  value={profileForm.location}
+                  value={profileForm.skills[index]}
                   onChange={handleInputChange}
                   className="input input-ghost w-full max-w-xs"
                 />
-              </div>
-            </div>
-          </>
-        ))}
+              ))}
+          </ul>
+        </div>
+      </div>
+      <div>
+        <label className="antialiased text-2xl font-extrabold">Interests</label>
+        <div>
+          <ul>
+            {profiles.interests &&
+              profiles.interests.map((interests, index) => (
+                <input
+                  key={interests.name}
+                  name="skills"
+                  type="text"
+                  value={profileForm.interests[index]}
+                  onChange={handleInputChange}
+                  className="input input-ghost w-full max-w-xs"
+                />
+              ))}
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h1 className="antialiased text-2xl font-extrabold">Links</h1>
+        <div>
+          <ul>
+            {profiles.websites &&
+              profiles.websites.map((websites, index) => (
+                <li key={websites.name}>
+                  {/* icon for edit */}
+                  <i></i>
+                  <a href={profileForm.websites}>{profiles.websites}</a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </div>
+      <div>
+        <label className="antialiased text-2xl font-extrabold">Location</label>
+        <div>
+          <input
+            name="location"
+            type="text"
+            value={profileForm.location}
+            onChange={handleInputChange}
+            className="input input-ghost w-full max-w-xs"
+          />
+        </div>
+      </div>
+
       <button
         className="flex flex-row"
         name="bio"

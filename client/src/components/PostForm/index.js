@@ -30,22 +30,22 @@ const PostForm = () => {
     },
   });
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
 
-    try {
-      const { data } = await addPost({
-        variables: {
-          postText,
-          postAuthor,
-        },
-      });
+  //   try {
+  //     const { data } = await addPost({
+  //       variables: {
+  //         postText,
+  //         postAuthor,
+  //       },
+  //     });
 
-      setPostContent("");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //     setPostContent("");
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   const handleChange = (event) => {
     const { name, value } = event.target;

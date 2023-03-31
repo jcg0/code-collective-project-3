@@ -21,12 +21,12 @@ const userSchema = new Schema({
   },
   firstName: {
     type: String,
-    // required: true,
+    required: true,
     trim: true,
   },
   lastName: {
     type: String,
-    // required: true,
+    required: true,
     trim: true,
   },
   posts: [
@@ -35,12 +35,10 @@ const userSchema = new Schema({
       ref: "Post",
     },
   ],
-  profile: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Profile",
-    },
-  ],
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
+  },
   friendsList: [
     {
       type: Schema.Types.ObjectId,
