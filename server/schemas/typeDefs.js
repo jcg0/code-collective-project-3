@@ -54,7 +54,7 @@ const typeDefs = gql`
     userPosts(postAuthor: String!): [Post]!
     posts: [Post]
     # friendsList: [User]!
-    # post(postId: ID!): Post
+    post(postId: ID!): Post
   }
 
   type Mutation {
@@ -86,8 +86,8 @@ const typeDefs = gql`
     ): Post
     updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
     removeComment(postId: ID!, commentId: ID!): Post
-    addFriend( friendName: String!): User
-    removeFriend(friendName: String!): User
+    addFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
   }
 `;
 
