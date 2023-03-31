@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-const FriendsList = ({friendsList})  => {
+const FriendsList = ({friendsList= []})  => {
     
 
 debugger
 return (
     <div className="flex flex-col items-center text-center space-y-20">
         <div >
-          {friendsList &&
-            friendsList.map((friendship,index) => (
+          {friendsList.username &&
+            friendsList.username.map((friendship,index) => (
               <div key={index} className="col-12 col-xl-6">
                 <ul class="menu bg-base-100 w-56 rounded-box">
                   <li> <a href="add link to profile page">[{friendsList}]</a></li>
@@ -20,7 +20,7 @@ return (
               </div>
             ))}
         </div>
-          <div >
+          {/* <div >
           {friendsList &&
             friendsList.map((friendship, index) => (
               <div  key={index} className="col-12 col-xl-6">
@@ -33,7 +33,7 @@ return (
                 </div>
               </div>
             ))}
-        </div> */
+        </div> */ }
     </div>
 );
 }
