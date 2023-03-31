@@ -1,6 +1,7 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Post, Profile } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Post, Profile } = require('../models');
+const { signToken } = require('../utils/auth');
+const ObjectId = require('mongodb').ObjectId
 
 const resolvers = {
   Query: {
@@ -195,20 +196,30 @@ const resolvers = {
       throw new AuthenticationError("Please login to delete a comment.");
     },
 
-    addFriend: async (parent, { friendId }, context) => {
+    addFriend: async (parent, { friendName }, context) => {
       if (context.user) {
-        const returnUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { friendsList: friendId } },
-          { new: true }
-        );
 
+        const findFriend = await User.findOne({
+          username: friendName
+        
+        })
+        console.log(findFriend._id)
+        console.log(context.user._id)
+        // const returnUser= await User.findById(
+        //  context.user._id 
+        // )
+        const returnUser = await User.findByIdAndUpdate(
+          context.user._id ,
+          { $addToSet: { friendsList: findFriend._id } },
+          { new: true, }
+        );
+        console.log(returnUser)
         return returnUser;
       }
       throw new AuthenticationError("Please log in to create a post.");
     },
 
-    removeFriend: async (parent, { friendId }, context) => {
+    removeFriend: async (parent, { friendName }, context) => {
       if (context.user) {
         const returnUser = await User.findOneAndUpdate(
           { _id: context.user._id },

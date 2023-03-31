@@ -59,7 +59,7 @@ const PostForm = () => {
   return (
     <div className="card w-screen m-3 bg-base-100 shadow-xl">
       <div className="form-control w-full max-w-xs">
-        <h2>What's got your gears going></h2>
+        <h2>What's got your gears going</h2>
         {/* <label className="label">
             <span className="label-text">What's got your gears going?</span>
         </label> */}

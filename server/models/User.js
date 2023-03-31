@@ -47,6 +47,8 @@ const userSchema = new Schema({
       ref: "User",
     },
   ],
+},{
+  toJSON:{virtuals: true}
 });
 
 userSchema.pre("save", async function (next) {
@@ -62,6 +64,12 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = model("User", userSchema);
+// Create virtual property that gets friend count amount
+userSchema.virtual('friendCount')
+    .get(function () {
+        return this.friendsList.length;
+    });
+
+const User = model('User', userSchema);
 
 module.exports = User;

@@ -37,6 +37,7 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      friendsList
       profile {
         _id
         bio
