@@ -54,7 +54,7 @@ const typeDefs = gql`
     userPosts(postAuthor: String!): [Post]!
     posts: [Post]
     # friendsList: [User]!
-    # post(postId: ID!): Post
+    post(postId: ID!): Post
   }
 
   type Mutation {

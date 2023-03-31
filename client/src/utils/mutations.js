@@ -72,6 +72,7 @@ export const UPDATE_PROFILE = gql`
 export const ADD_POST = gql`
   mutation AddPost($postContent: String!) {
     addPost(postContent: $postContent) {
+      _id
       postAuthor
       postContent
       createdAt
@@ -158,10 +159,21 @@ export const REMOVE_COMMENT = gql`
   }
 `;
 
-// export const ADD_FRIEND = gql`
+export const ADD_FRIEND = gql`
+  mutation AddFriend($userID: ID! $username: String!) {
+    addFriend(userId: $userId, username: $username ) {
+      _id
+      username
+    }
 
-// `;
+  }
+`;
 
-// export const REMOVE_FRIEND = gql`
-
-// `;
+export const REMOVE_FRIEND = gql`
+  mutation RemoveFriend($username: String!) {
+    removeFriend(username: $username) {
+      _id
+      username
+    }
+  }
+`;

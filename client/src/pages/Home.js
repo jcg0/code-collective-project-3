@@ -10,17 +10,15 @@ const Home = () => {
   const posts = data?.posts || []; 
 
   return (
-    <main className="home-container">
+    <main className="home-container w-screen">
       <div className="card w-screen m-3 bg-base-100 shadow-xl">
         <PostForm />
       </div>
-      <div className="card w-screen m-3 bg-base-100 shadow-xl">
         {loading ? 
         (<div>Loading...</div>
         ) : (
-        <PostList posts={posts} title="Some posts to peruse..." />
+        <PostList posts={posts} title="Some posts to peruse..."/>
         )}
-      </div>
     </main>
   );
 };

@@ -14,6 +14,8 @@ import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
+import Friends from "./pages/Friends";
+import FriendsList from "./components/Friends/FriendsList";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -52,6 +54,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/me" element={<Profile />} />
               <Route path="/profiles/:username" element={<Profile />} />
+                <Route path="/friends" element={<Friends/>} />
             </Routes>
           </div>
           {/* <Footer /> */}

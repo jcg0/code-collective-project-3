@@ -1,6 +1,7 @@
-const { AuthenticationError } = require("apollo-server-express");
-const { User, Post, Profile } = require("../models");
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Post, Profile } = require('../models');
+const { signToken } = require('../utils/auth');
+const ObjectId = require('mongodb').ObjectId
 
 const resolvers = {
   Query: {
@@ -150,7 +151,14 @@ const resolvers = {
 
     addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {
-        return Post.findOneAndUpdate(
+
+        const findPost = await Post.findOne({
+          _id: postId
+        }); 
+
+        console.log(findPost)
+
+        const addComment = await Post.findByIdAndUpdate(
           { _id: postId },
           {
             $addToSet: {
@@ -162,6 +170,21 @@ const resolvers = {
             runValidators: true,
           }
         );
+        console.log(addComment); 
+        return addComment;
+
+        // return Post.findOneAndUpdate(
+        //   { _id: postId },
+        //   {
+        //     $addToSet: {
+        //       comments: { commentText, commentAuthor: context.user.username },
+        //     },
+        //   },
+        //   {
+        //     new: true,
+        //     runValidators: true,
+        //   }
+        // );
       }
       throw new AuthenticationError("Please login to add a comment.");
     },
@@ -203,24 +226,40 @@ const resolvers = {
       throw new AuthenticationError("Please login to delete a comment.");
     },
 
-    addFriend: async (parent, { friendId }, context) => {
+    addFriend: async (parent, { friendName }, context) => {
       if (context.user) {
-        const returnUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { friendsList: friendId } },
-          { new: true }
-        );
 
+        const findFriend = await User.findOne({
+          username: friendName
+        
+        })
+        console.log(findFriend._id)
+        console.log(context.user._id)
+        // const returnUser= await User.findById(
+        //  context.user._id 
+        // )
+        const returnUser = await User.findByIdAndUpdate(
+          context.user._id ,
+          { $addToSet: { friendsList: findFriend._id } },
+          { new: true, }
+        );
+        console.log(returnUser)
         return returnUser;
       }
       throw new AuthenticationError("Please log in to create a post.");
     },
 
-    removeFriend: async (parent, { friendId }, context) => {
+    removeFriend: async (parent, { friendName }, context) => {
+      const findFriend = await User.findOne({
+        username: friendName
+      
+      })
+
       if (context.user) {
-        const returnUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { friendsList: friendId } }
+        const returnUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { $pull: { friendsList: findFriend._id } },
+          {new:true,}
         );
 
         return returnUser;
