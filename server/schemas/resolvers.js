@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Post, Profile } = require('../models');
 const { signToken } = require('../utils/auth');
+const ObjectId = require('mongodb').ObjectId
 
 const resolvers = {
   Query: {
@@ -181,10 +182,15 @@ const resolvers = {
 
         const findFriend = await User.findOne({
           username: friendName
+        
         })
+        console.log(findFriend._id)
         console.log(context.user._id)
+        // const returnUser= await User.findById(
+        //  context.user._id 
+        // )
         const returnUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
+          context.user._id ,
           { $addToSet: { friendsList: findFriend._id } },
           { new: true, }
         );
