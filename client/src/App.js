@@ -15,7 +15,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 
-import Friends from "./pages/FriendsList";
+import Friends from "./pages/Friends";
+import FriendsList from "./components/Friends/FriendsList";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
