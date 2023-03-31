@@ -4,7 +4,8 @@
         "email": "batman@code-collective.com.com", 
         "password": "Password01", 
         "firstName": "Wayne", 
-        "lastName": "Bruce"
+        "lastName": "Bruce",
+        "friendsList": [{"username": "Superman"}]
     }, 
     {
         "username": "Superman", 
