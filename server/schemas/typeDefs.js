@@ -18,7 +18,7 @@ const typeDefs = gql`
     bio: String!
     skills: [String]
     interests: [String]
-    avatar: String
+    # avatar: String
     location: String
     websites: [String]
     # username: User
@@ -79,7 +79,7 @@ const typeDefs = gql`
       bio: String!
       skills: [String]!
       interests: [String]!
-      avatar: String!
+      # avatar: String!
       websites: [String]!
       location: String!
     ): Profile

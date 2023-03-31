@@ -6,12 +6,14 @@ export const QUERY_USER = gql`
       _id
       username
       email
+      firstName
+      lastName
       profile {
         _id
         bio
         skills
         interests
-        avatar
+        # avatar
         websites
         location
       }
@@ -37,12 +39,14 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      firstName
+      lastName
       profile {
         _id
         bio
         skills
         interests
-        avatar
+        # avatar
         websites
         location
       }
@@ -121,7 +125,7 @@ export const QUERY_USER_PROFILE = gql`
         bio
         skills
         interests
-        avatar
+        # avatar
         location
         websites
       }

@@ -71,7 +71,7 @@ const resolvers = {
 
     updateProfile: async (
       parent,
-      { bio, skills, interests, avatar, websites, location },
+      { bio, skills, interests, websites, location },
       context
     ) => {
       if (context.user) {
@@ -79,7 +79,6 @@ const resolvers = {
           bio,
           skills,
           interests,
-          avatar,
           websites,
           location,
         });
