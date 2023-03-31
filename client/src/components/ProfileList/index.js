@@ -101,7 +101,7 @@ const ProfileList = ({ profiles, title, loading }) => {
   // const editProfileItem = (profileId, newValue) => [
   //   if()
   // ]
-  // debugger;
+  debugger;
   return (
     <form
       className="flex flex-col items-center text-center space-y-20"
