@@ -13,6 +13,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Profile from "./pages/Profile";
+
 import Friends from "./pages/FriendsList";
 
 // Construct our main GraphQL API endpoint
@@ -43,19 +45,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div data-theme="forest" className=" h-screen ">
+        <div>
           <Header />
-          <main>
-            <div className="container">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
+          <div className="md:container md:mx-auto">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/me" element={<Profile />} />
+              <Route path="/profiles/:username" element={<Profile />} />
                 <Route path="/friends" element={<Friends/>} />
-              </Routes>
-            </div>
-          </main>
-          <Footer />
+            </Routes>
+          </div>
+          {/* <Footer /> */}
         </div>
       </Router>
     </ApolloProvider>

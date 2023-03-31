@@ -29,7 +29,7 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_PROFILE = gql`
-  mutation UpdateProfile(
+  mutation Mutation(
     $bio: String!
     $skills: [String]!
     $interests: [String]!
@@ -45,17 +45,12 @@ export const UPDATE_PROFILE = gql`
       websites: $websites
       location: $location
     ) {
-      username
-      email
-      _id
-      profile {
-        avatar
-        bio
-        interests
-        location
-        skills
-        websites
-      }
+      skills
+      bio
+      interests
+      avatar
+      location
+      websites
     }
   }
 `;
