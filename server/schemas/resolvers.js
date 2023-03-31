@@ -143,7 +143,14 @@ const resolvers = {
 
     addComment: async (parent, { postId, commentText }, context) => {
       if (context.user) {
-        return Post.findOneAndUpdate(
+
+        const findPost = await Post.findOne({
+          _id: postId
+        }); 
+
+        console.log(findPost)
+
+        const addComment = await Post.findByIdAndUpdate(
           { _id: postId },
           {
             $addToSet: {
@@ -155,6 +162,21 @@ const resolvers = {
             runValidators: true,
           }
         );
+        console.log(addComment); 
+        return addComment;
+
+        // return Post.findOneAndUpdate(
+        //   { _id: postId },
+        //   {
+        //     $addToSet: {
+        //       comments: { commentText, commentAuthor: context.user.username },
+        //     },
+        //   },
+        //   {
+        //     new: true,
+        //     runValidators: true,
+        //   }
+        // );
       }
       throw new AuthenticationError("Please login to add a comment.");
     },
