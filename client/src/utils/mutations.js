@@ -63,6 +63,7 @@ export const UPDATE_PROFILE = gql`
 export const ADD_POST = gql`
   mutation AddPost($postContent: String!) {
     addPost(postContent: $postContent) {
+      _id
       postAuthor
       postContent
       createdAt

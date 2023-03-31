@@ -9,12 +9,12 @@ const PostList = ({ posts, title }) => {
   console.log(posts); 
 
   return (
-    <div className="post-list-container">
-    <h2>{title}</h2>
+    <div className="rounded-2xl post-list-container p-2">
+    <h2 className="text-center text-primary">{title}</h2>
     {posts && 
         posts.map((post) => (
-            <div className="card w-screen m-3 bg-base-100 shadow-xl">
-                <div className="card-body bg-secondary">
+            <div className="card w-screen my-4  shadow-xl" key={post._id}>
+                <div className="card-body bg-primary-content rounded-xl">
                     {/* <div className="avatar">
                     <div className="w-8 rounded">
                         <img
@@ -23,9 +23,9 @@ const PostList = ({ posts, title }) => {
                         />
                     </div>
                     </div> */}
-                    <h3 className="card-title username">{post.postAuthor}</h3>
-                    <p>{post.postContent}</p>
-                    <p>This thought occured {post.createdAt}</p>
+                    <h3 className="card-title username ">{post.postAuthor}</h3>
+                    <p className="bg-secondary p-2 rounded-md">{post.postContent}</p>
+                    <p className="text-xs">This thought occured {post.createdAt}</p>
                     <div className="card-actions justify-end">
                         <p>Put comments here eventually.</p>
                     {/* <div tabIndex={0} className="collapse group">
