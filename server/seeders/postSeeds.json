@@ -1,7 +1,13 @@
 [
     {
         "postContent": "I am venegeance.",
-        "postAuthor": "Batman"
+        "postAuthor": "Batman", 
+        "comments": [
+            {
+                "commentText": "Test comment", 
+                "commentAuthor": "Superman"
+            }
+        ]
     }, 
     {
         "postContent": "Fear is a tool. They think I'm hiding in the shadows. But I am the shadows.",
