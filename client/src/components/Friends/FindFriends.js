@@ -11,7 +11,7 @@ const findFriends = ({}) => {
 
     return(
          <div >
-            {friendsList &&
+            {/* {friendsList &&
               friendsList.map((friendList, index) => (
                 <div  key={index} className="col-12 col-xl-6">
                   <ul class="menu bg-base-100 w-56 rounded-box">
@@ -22,7 +22,7 @@ const findFriends = ({}) => {
                     <button  class="btn">Remove Friend</button>
                   </div>
                 </div>
-              ))}
+              ))} */}
           </div>  
     )
 }
