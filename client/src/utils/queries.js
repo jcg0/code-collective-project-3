@@ -62,6 +62,19 @@ export const QUERY_ME = gql`
   }
 `;
 
+// export const QUERY_POSTS = gql`
+// query Users {
+//   users {
+//     posts {
+//       _id
+//       postContent
+//       postAuthor
+//       createdAt
+//     }
+//   }
+// }
+// `
+
 export const QUERY_POSTS = gql`
   query Posts {
     posts {

@@ -26,6 +26,13 @@ const resolvers = {
       }
       throw new AuthenticationError("Please log in to use this feature.");
     },
+    posts: async (parent, {username}, context) => {
+      if (context.user) {
+        const params = username ? username : {}
+        return Post.find(params)
+      }
+      throw new AuthenticationError('Please log in to see posts');
+    },
   },
 
   Mutation: {

@@ -15,6 +15,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",
