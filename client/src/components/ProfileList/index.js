@@ -64,6 +64,7 @@ const ProfileList = ({ profiles, title, loading }) => {
         break;
     }
   };
+  console.log(profiles);
 
   // debugger;
   return (

@@ -157,9 +157,8 @@ export const REMOVE_COMMENT = gql`
 `;
 
 export const ADD_FRIEND = gql`
-  mutation AddFriend($userID: ID!, $username: String!) {
-    addFriend(userId: $userId, username: $username) {
-      _id
+  mutation AddFriend($friendName: String!) {
+    addFriend(friendName: $friendName) {
       username
     }
   }
