@@ -4,7 +4,7 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 import Auth from "../utils/auth";
 import { useParams, Navigate } from "react-router-dom";
 import FriendsList from "../components/Friends/FriendsList";
-import findFriends from "../components/Friends/FindFriends";
+import FindFriends from "../components/Friends/FindFriends";
 
 
 const Friends = () => {
@@ -45,7 +45,7 @@ console.log(user)
               <h1 className="antialiased text-2xl font-extrabold">
                 Add More Friends
               </h1>
-            {/* <findFriends findFriends={user.friendsList}/> */}
+             <FindFriends findFriends={user.findFriends}/> 
         </div>
       );
 

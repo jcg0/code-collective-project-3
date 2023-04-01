@@ -149,4 +149,11 @@ query Query($username: String!) {
       username
     }
   }
+}`;
+
+export const QUERY_USER_LIST = gql `
+query Users {
+  users {
+    username
+  }
 }`
