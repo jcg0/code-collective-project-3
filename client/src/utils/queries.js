@@ -9,7 +9,7 @@ export const QUERY_USER = gql`
       firstName
       lastName
       friendsList{
-        _id
+        
         username
       }
 
