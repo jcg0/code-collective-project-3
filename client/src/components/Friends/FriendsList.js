@@ -1,21 +1,42 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_FRIEND, REMOVE_FRIEND } from "../../utils/mutations";
+import { QUERY_ME } from "../../utils/queries";
 
 const FriendsList = ({friendsList})  => {
     
-  const [addFriend, {error}] = useMutation(ADD_FRIEND)
+  const [removeFriend, { error }] = useMutation(REMOVE_FRIEND,{
+    update(cache, { data: { removeFriend } }) {
+      try {
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: removeFriend },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
 
-  const [removeFriend, {err}] = useMutation(REMOVE_FRIEND)
+  const handleRemove = async (friendName) => {
+    try {
+      const { data } = await removeFriend({
+        variables: { friendName: friendName },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-  // const handleAdd = () => {addFriend}
-
-  // const handleRemove = () => {removeFriend}
+  if (!friendsList.length) {
+    return <h3>Add Some Friends!</h3>;
+  }
+  
 
 // debugger
 return (
     <div className="flex flex-col items-center text-center space-y-20">
-        {/* <div >
+        <div >
           {friendsList &&
             friendsList.map((friendList,index) => (
               <div key={index} className="col-12 col-xl-6">
@@ -23,12 +44,11 @@ return (
                   <li> <a href="add link to profile page">{friendList.username}</a></li>
                 </ul>
                 <div class="btn-group">
-                  <button onClick={handleAdd} class="btn">Add Friend</button>
-                  <button onClick={handleRemove} class="btn">Remove Friend</button>
+                  <button onClick={()=>handleRemove(friendList.username)} class="btn">Remove Friend</button>
                 </div>
               </div>
             ))}
-        </div> */}
+        </div>
     </div>
 );
 }
