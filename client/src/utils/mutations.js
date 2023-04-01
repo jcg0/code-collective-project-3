@@ -160,13 +160,11 @@ export const REMOVE_COMMENT = gql`
 `;
 
 export const ADD_FRIEND = gql`
-  mutation AddFriend($userID: ID! $username: String!) {
-    addFriend(userId: $userId, username: $username ) {
-      _id
-      username
-    }
-
+  mutation Mutation($friendName: String!) {
+  addFriend(friendName: $friendName) {
+    username
   }
+}
 `;
 
 export const REMOVE_FRIEND = gql`

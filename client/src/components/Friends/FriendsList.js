@@ -27,6 +27,7 @@ const FriendsList = ({friendsList})  => {
       console.error(err);
     }
   };
+  console.log(friendsList)
 
   if (!friendsList.length) {
     return <h3>Add Some Friends!</h3>;
@@ -40,11 +41,11 @@ return (
           {friendsList &&
             friendsList.map((friendList,index) => (
               <div key={index} className="col-12 col-xl-6">
-                <ul class="menu bg-base-100 w-56 rounded-box">
+                <ul className="menu bg-base-100 w-56 rounded-box">
                   <li> <a href="add link to profile page">{friendList.username}</a></li>
                 </ul>
                 <div class="btn-group">
-                  <button onClick={()=>handleRemove(friendList.username)} class="btn">Remove Friend</button>
+                  <button onClick={()=>handleRemove(friendList.username)} className="btn">Remove Friend</button>
                 </div>
               </div>
             ))}
