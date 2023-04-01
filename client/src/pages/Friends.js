@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_USER } from "../utils/queries";
+import { QUERY_ME, QUERY_USER, QUERY_USER_LIST } from "../utils/queries";
 import Auth from "../utils/auth";
 import { useParams, Navigate } from "react-router-dom";
 import FriendsList from "../components/Friends/FriendsList";
@@ -16,11 +16,14 @@ const Friends = () => {
         //     variables:{username: userParam}
         // }
     );
-console.log(QUERY_ME)
-console.log(QUERY_USER)
+
+    const {loading2, data2} = useQuery(userParam ? QUERY_USER : QUERY_USER_LIST);
+    
+
+
     // Check if data is returning from the `QUERY_ME` query
   const user = data?.me || data?.user || {};
-
+const user2 = data2?.me || data2?.user || [];
   if (Auth.loggedIn() && Auth.getFriends().data.username === userParam) {
     return <Navigate to="/me" />;
   }
@@ -29,8 +32,9 @@ console.log(QUERY_USER)
     return <div>Loading...</div>;
   }
 
-console.log(user.friendsList[0].username)
-console.log(user)
+console.log(data)
+console.log(data2)
+console.log(user2)
     
     // if (!friendList.length) {
     //   return <h3>You have not added any friends yet!</h3>;
@@ -45,7 +49,7 @@ console.log(user)
               <h1 className="antialiased text-2xl font-extrabold">
                 Add More Friends
               </h1>
-             <FindFriends findFriends={user.findFriends}/> 
+             <FindFriends findFriends={user2.username}/> 
         </div>
       );
 

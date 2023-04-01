@@ -37,7 +37,7 @@ const FriendsList = ({friendsList})  => {
 // debugger
 return (
     <div className="flex flex-col items-center text-center space-y-20">
-        <div >
+        `<div >
           {friendsList &&
             friendsList.map((friendList,index) => (
               <div key={index} className="col-12 col-xl-6">
@@ -49,7 +49,7 @@ return (
                 </div>
               </div>
             ))}
-        </div>
+        </div>`
     </div>
 );
 }

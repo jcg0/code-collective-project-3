@@ -30,7 +30,7 @@ const FindFriends = ({findFriends}) => {
     const {loading, data}= useQuery(QUERY_USER_LIST);
     const user = data?.me || data?.user || {}; 
     console.log(user)
-console.log(findFriends.username)
+console.log(findFriends)
 console.log(QUERY_USER)
 console.log(QUERY_USER_LIST)
 
