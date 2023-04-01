@@ -40,6 +40,7 @@ const PostForm = () => {
       console.log("form submit is the issue");
     }
   };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 

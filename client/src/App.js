@@ -53,8 +53,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/me" element={<Profile />} />
-              <Route path="/profiles/:username" element={<Profile />} />
-                <Route path="/friends" element={<Friends/>} />
+              <Route path="/profile/:username" element={<Profile />} />
+              <Route path="/friends" element={<Friends />} />
             </Routes>
           </div>
           {/* <Footer /> */}
