@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
-import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
+import { QUERY_POSTS } from "../../utils/queries";
 import Auth from "../../utils/auth";
 // import { addTypenameToDocument } from "@apollo/client/utilities";
 
@@ -23,21 +23,6 @@ const PostForm = () => {
         console.error(e);
         console.log("its in the update");
       }
-
-      // const { me } = cache.readQuery({ query: QUERY_ME }) ?? { posts:[] };
-      // if (me) {
-      //   console.log(me);
-      //   cache.writeQuery({
-      //     query: QUERY_ME,
-      //     data: { me: { ...me, posts: [...me.posts, addPost] } },
-      //   });
-      // } else {
-      //   console.log(me);
-      //   cache.writeQuery({
-      //     query: QUERY_ME,
-      //     data: { me: { posts: [] } },
-      //   });
-      // }
     },
   });
 
@@ -55,6 +40,7 @@ const PostForm = () => {
       console.log("form submit is the issue");
     }
   };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -65,15 +51,10 @@ const PostForm = () => {
   };
 
   return (
-    // <div className="card w-screen m-3 bg-base-100 shadow-xl">
-    <div className="form-control max-w-xs p-4">
-      <h2 className="pb-2">
+    <div className="form-control p-4 m-2">
+      <h2 className="pb-2 text-secondary">
         <b>What's got your gears going?</b>
       </h2>
-      {/* <label className="label">
-
-            <span className="label-text">What's got your gears going?</span>
-        </label> */}
       {Auth.loggedIn() ? (
         <>
           <form onSubmit={handleFormSubmit}>
@@ -86,10 +67,10 @@ const PostForm = () => {
               onChange={handleChange}
             />
             <label className="label">
-              <span className="label-text-alt">{characterCount}/280</span>
+              <span className="label-text-alt text-secondary">{characterCount}/280</span>
             </label>
             <button
-              className="btn btn-primary btn-wide justify-center"
+              className="btn btn-secondary btn-block content-center"
               type="submit"
             >
               Post
@@ -139,11 +120,11 @@ const PostForm = () => {
           <input
             type="text"
             placeholder="You can't touch this"
-            className="input input-bordered w-full max-w-xs"
+            className="input input-bordered"
             disabled
           />
           <button
-            className="btn btn-disabled"
+            className="btn btn-disabled bg-secondary"
             tabindex="-1"
             role="button"
             aria-disabled="true"
@@ -154,7 +135,7 @@ const PostForm = () => {
         </form>
       )}
     </div>
-    // </div>
+
   );
 };
 

@@ -1,45 +1,38 @@
 import React from "react";
+import CommentForm from '../CommentForm/index'; 
 
-const CommentsList = ({ comments = [] }) => {
-//   if (!posts.comments) {
-//     return <h4>No comments for this post yet.</h4>
-//   }
-    return (
-    <div className="collapse">
+const CommentsList = ({ comments = [], postId }) => {
+
+    // const handleCommentAdd = () => {
+
+    // }
+    
+  return (
+    <div>
+    <div className="collapse collapse-arrow">
       <input type="checkbox" />
-      <div className="collapse-title text-m font-medium">
-        Show comments
-      </div>
-      {!comments ? (
+      <div className="collapse-title text-m font-medium">Show comments</div>
+      {( comments.length === 0) ? (
         <div className="collapse-content">
-            <p>No comments for this post yet.</p>
+        <p className="text-sm">No comments for this post; add yours below!</p>
         </div>
       ) : (
         <>
-        <div className="collapse-content">
+          <div className="collapse-content">
+            {/* <CommentForm postId={postId}/> */}
             {comments.map((comment) => (
-            <>
-              <p>{comment.commentText}</p>
-              <p>{comment.commentAuthor}</p>
-              <p>{comment.createdAt}</p>
-            </>
+              <div className="py-1"key={comment._id}>
+                <p className="text-sm my-1">{comment.commentAuthor}</p>
+                <p className="bg-white p-3 rounded-md text-sm">{comment.commentText}</p>
+                <p className="text-xs my-1">{comment.createdAt}</p>
+              </div>
             ))}
-        </div>
+          </div>
         </>
       )}
-      </div>
-
-    // <div tabIndex={0} className="collapse group">
-    //     <div className="collapse-title bg-primary text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
-    // View Comments
-    // </div>
-    // <div className="collapse-content bg-primary text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
-    //     {post.comments
-    //         ? <p>tabIndex={0} attribute is necessary to make the div focusable</p>
-    //         :  <p>No comments yet!</p>
-    //     }
-    // </div>
-    // </div>
+    </div>
+    <CommentForm postId={postId}/>
+    </div>
   );
 };
 

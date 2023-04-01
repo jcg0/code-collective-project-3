@@ -8,11 +8,9 @@ export const QUERY_USER = gql`
       email
       firstName
       lastName
-      friendsList{
-        
+      friendsList {
         username
       }
-
       profile {
         _id
         bio
@@ -46,7 +44,7 @@ export const QUERY_ME = gql`
       email
       firstName
       lastName
-      friendsList{
+      friendsList {
         _id
         username
       }
@@ -143,17 +141,20 @@ export const QUERY_USER_PROFILE = gql`
 `;
 
 export const QUERY_USER_FRIENDS = gql`
-query Query($username: String!) {
-  user(username: $username) {
-    friendsList {
+  query Query($username: String!) {
+    user(username: $username) {
+      friendsList {
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_USER_LIST = gql`
+  query Query {
+    users {
+      _id
       username
     }
   }
-}`;
-
-export const QUERY_USER_LIST = gql `
-query Query {
-  users {
-    username
-  }
-}`
+`;
