@@ -167,7 +167,7 @@ const resolvers = {
           },
           {
             new: true,
-            runValidators: true,
+            // runValidators: true,
           }
         );
         console.log(addComment); 

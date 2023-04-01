@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <main className="home-container w-screen">
-      <div className="card w-screen m-3 bg-base-100 shadow-xl">
+      <div className="card bg-neutral-focus shadow-xl m-2">
         <PostForm />
       </div>
         {loading ? 
