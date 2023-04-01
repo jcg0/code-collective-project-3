@@ -47,7 +47,6 @@ export const UPDATE_PROFILE = gql`
     $bio: String!
     $skills: [String]!
     $interests: [String]!
-    $avatar: String!
     $websites: [String]!
     $location: String!
   ) {
@@ -55,14 +54,12 @@ export const UPDATE_PROFILE = gql`
       bio: $bio
       skills: $skills
       interests: $interests
-      avatar: $avatar
       websites: $websites
       location: $location
     ) {
       skills
       bio
       interests
-      avatar
       location
       websites
     }
@@ -160,16 +157,16 @@ export const REMOVE_COMMENT = gql`
 `;
 
 export const ADD_FRIEND = gql`
-  mutation Mutation($friendName: String!) {
-  addFriend(friendName: $friendName) {
-    username
+  mutation AddFriend($friendName: String!) {
+    addFriend(friendName: $friendName) {
+      username
+    }
   }
-}
 `;
 
 export const REMOVE_FRIEND = gql`
-mutation ($friendName: String!) {
-  removeFriend(friendName: $friendName) {
+  mutation ($friendName: String!) {
+    removeFriend(friendName: $friendName) {
       _id
       username
     }

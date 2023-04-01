@@ -48,12 +48,9 @@ const Header = () => {
                 <li>
                   <a>Chat</a>
                 </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <button className="btn btn-lg btn-light m-2" onClick={logout}>
+                <Link className="btn btn-lg btn-light m-2" onClick={logout}>
                   Logout
-                </button>
+                </Link>
                 {/* <li>
                   <a>Logout</a>
                 </li> */}
@@ -65,6 +62,11 @@ const Header = () => {
             <div className="navbar-end">
               <Link to="/signup">
                 <a className="btn">signup</a>
+              </Link>
+            </div>
+            <div className="navbar-end">
+              <Link to="/login">
+                <a className="btn">login</a>
               </Link>
             </div>
           </>
