@@ -22,7 +22,10 @@ const FindFriends = () => {
     try {
       const { data } = await addFriend({
         variables: { friendName: friendName },
-      });
+        
+      }
+      
+      );
     } catch (err) {
       console.error(err);
     }
@@ -35,15 +38,16 @@ const FindFriends = () => {
     <div>
       {data &&
         data.users.map((friend, index) => (
-          <div key={index} className="col-12 col-xl-6">
-            <ul className="menu bg-base-100 w-56 rounded-box">
-              <li>
-                <Link to={`profile/${friend.username}`}>{friend.username}</Link>
-              </li>
+          <div key={index} className=" text-center col-12 col-xl-6">
+            <ul className="text-center menu bg-primary w-56 rounded-box">
+              <div>
+                <Link className="text-center username fs-2" to={`profile/${friend.username}`}>{friend.username}</Link>
+              </div>
             </ul>
             <div className="btn-group">
               <button
                 onClick={() => handleAdd(friend.username)}
+                
                 className="btn"
               >
                 Add Friend

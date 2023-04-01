@@ -38,22 +38,17 @@ const Header = () => {
                 tabIndex={0}
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <a className="justify-between">Home</a>
-                </li>
-                <Link to="/me">your profile</Link>
-                <li>
-                  <a>Friends</a>
-                </li>
+                <Link to= "/">Home</Link>
+
+                <Link to="/profile/me">Your Profile</Link>
+               
+                <Link to="/friends">Friends</Link>
                 <li>
                   <a>Chat</a>
                 </li>
                 <Link className="btn btn-lg btn-light m-2" onClick={logout}>
                   Logout
                 </Link>
-                {/* <li>
-                  <a>Logout</a>
-                </li> */}
               </ul>
             </div>
           </>
@@ -61,12 +56,12 @@ const Header = () => {
           <>
             <div className="navbar-end">
               <Link to="/signup">
-                <a className="btn">signup</a>
+                <div className="btn">Signup</div>
               </Link>
             </div>
             <div className="navbar-end">
               <Link to="/login">
-                <a className="btn">login</a>
+                <div className="btn">Login</div>
               </Link>
             </div>
           </>
