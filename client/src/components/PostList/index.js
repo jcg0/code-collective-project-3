@@ -2,7 +2,7 @@ import React from "react";
 import CommentsList from '../CommentsList';
 import Avatar from '../Avatar'; 
 
-const PostList = ({ posts, firstName, lastName }) => {
+const PostList = ({ posts, firstName, lastName, username }) => {
 
 
   return (
@@ -15,10 +15,13 @@ const PostList = ({ posts, firstName, lastName }) => {
                     <Avatar firstName={firstName} lastName={lastName} size="sm" />
                     <h3 className="card-title username ">{post.postAuthor}</h3>
                     <p className="bg-white p-3 rounded-md text-md"><code>{post.postContent}</code></p>
-                    <p className="text-xs">This thought occured {post.createdAt}</p>
+                    <p className="text-xs">This thought occurred {post.createdAt}</p>
                     <div className="card-actions">
                         <CommentsList comments={post.comments} postId={post._id}/>
                     </div>
+                    {{username} === post.postAuthor &&
+                    <button>click here</button>
+                    }
                 </div>
             </div>
     ))}

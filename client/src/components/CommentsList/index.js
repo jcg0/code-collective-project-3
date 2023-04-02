@@ -16,9 +16,8 @@ const CommentsList = ({ comments = [], postId }) => {
       ) : (
         <>
           <div className="collapse-content">
-            {/* <CommentForm postId={postId}/> */}
             {comments.map((comment) => (
-              <div className="py-1"key={comment._id}>
+              <div className="py-1" key={comment._id}>
                 <p className="text-sm my-1">{comment.commentAuthor}</p>
                 <p className="bg-white p-3 rounded-md text-sm">{comment.commentText}</p>
                 <p className="text-xs my-1">{comment.createdAt}</p>
