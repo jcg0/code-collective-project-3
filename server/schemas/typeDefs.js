@@ -46,7 +46,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]!
+    users: [User]
     user(username: String!): User
     me: User
     # getAllProfiles(username: String!): [Profile]!

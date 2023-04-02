@@ -3,9 +3,6 @@ import CommentForm from '../CommentForm/index';
 
 const CommentsList = ({ comments = [], postId }) => {
 
-    // const handleCommentAdd = () => {
-
-    // }
     
   return (
     <div>
