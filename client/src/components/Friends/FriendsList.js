@@ -8,9 +8,15 @@ const FriendsList = ({ users }) => {
   const [removeFriend, { error }] = useMutation(REMOVE_FRIEND, {
     update(cache, { data: { removeFriend } }) {
       try {
+        const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
-          data: { me: removeFriend },
+          data: {
+            me: {
+              ...me,
+              friendsList: {...me.friendsList.filter((friend) => friend.username !== removeFriend.username)},
+            },
+          },
         });
       } catch (e) {
         console.error(e);

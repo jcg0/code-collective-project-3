@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_FRIEND } from "../../utils/mutations";
-import { QUERY_USER, QUERY_USER_LIST } from "../../utils/queries";
+import { QUERY_USER, QUERY_USER_LIST, QUERY_ME } from "../../utils/queries";
 import { Link } from "react-router-dom";
 
 const FindFriends = () => {
   const [addFriend, { error }] = useMutation(ADD_FRIEND, {
     update(cache, { data: { addFriend } }) {
       try {
+        const { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
-          query: QUERY_USER_LIST,
-          data: { user: addFriend },
+          query: QUERY_ME,
+          data: { me:{...me, friendsList: [...me.friendsList, addFriend]}}
         });
       } catch (e) {
         console.error(e);
