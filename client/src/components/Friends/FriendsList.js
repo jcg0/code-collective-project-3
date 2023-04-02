@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_FRIEND, REMOVE_FRIEND } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
+import { Link } from "react-router-dom";
 
 const FriendsList = ({ users }) => {
   const [removeFriend, { error }] = useMutation(REMOVE_FRIEND, {
@@ -38,12 +39,12 @@ const FriendsList = ({ users }) => {
       <div>
         {users &&
           users.map((friendList, index) => (
-            <div key={index} className="col-12 col-xl-6">
-              <ul className="menu bg-base-100 w-56 rounded-box">
-                <li>
+            <div key={index} className="text-center col-12 col-xl-6">
+              <ul className="text-center menu bg-primary w-56 rounded-box">
+                <div>
                   {" "}
-                  <a href="add link to profile page">{friendList.username}</a>
-                </li>
+                  <Link className="text-center username" to={`profile/${friendList.username}`}>{friendList.username}</Link>
+                </div>
               </ul>
               <div class="btn-group">
                 <button

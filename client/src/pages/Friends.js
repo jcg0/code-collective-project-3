@@ -18,7 +18,7 @@ const Friends = () => {
 
   // Check if data is returning from the `QUERY_ME` query
   const user = data?.me || data?.user || {};
-
+  console.log(user.friendsList)
   if (Auth.loggedIn() && Auth.getFriends().data.username === userParam) {
     return <Navigate to="/me" />;
   }
@@ -34,7 +34,7 @@ const Friends = () => {
   return (
     <div className="flex flex-col items-center text-center space-y-20">
       <h1 className="antialiased text-2xl font-extrabold">Friends List</h1>
-      <FriendsList friendsList={user.friendsList} />
+      <FriendsList users={user.friendsList} />
       <h1 className="antialiased text-2xl font-extrabold">Add More Friends</h1>
       <FindFriends />
     </div>
