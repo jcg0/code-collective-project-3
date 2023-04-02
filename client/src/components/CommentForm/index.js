@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_COMMENT } from "../../utils/mutations";
-import { QUERY_POSTS } from "../../utils/queries";
 import Auth from "../../utils/auth";
 
 const CommentForm = ({ postId }) => {
@@ -30,11 +29,11 @@ const CommentForm = ({ postId }) => {
   };
 
   const handleCommentChange = (event) => {
-    const { name, defaultValue } = event.target;
+    const { name, value } = event.target;
 
-    if (name === "commentText" && defaultValue.length <= 280) {
-      setCommentText(defaultValue);
-      setCharacterCount(defaultValue.length);
+    if (name === "commentText" && value.length <= 280) {
+      setCommentText(value);
+      setCharacterCount(value.length);
     }
   };
 
@@ -49,9 +48,9 @@ const CommentForm = ({ postId }) => {
           <textarea
             name="commentText"
             type="text"
-            defaultValue={commentText.commentText}
+            value={commentText}
             placeholder="Leave your comment here"
-            className="textarea textarea-bordered w-full bg-white"
+            className="textarea textarea-bordered w-full text-black bg-white"
             onChange={handleCommentChange}
           />
           <label className="label">

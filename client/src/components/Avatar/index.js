@@ -5,6 +5,7 @@ import {
 } from "../../utils/helpers";
 
 const Avatar = ({ firstName, lastName }) => {
+  
   let name = `${firstName} ${lastName}`;
   const userPlaceholder = generatePlaceholderName(name);
   const placeholderBackground = `hsl$(${generateRandomColor()})`;

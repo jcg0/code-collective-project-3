@@ -1,13 +1,14 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_POSTS } from "../utils/queries";
+import { QUERY_USER_LIST } from "../utils/queries";
 import PostForm from '../components/PostForm'; 
 import PostList from '../components/PostList'; 
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_POSTS);
+  const { loading, data } = useQuery(QUERY_USER_LIST); 
 
-  const posts = data?.posts || []; 
+  const users = data?.users || [];
+  console.log(users); 
 
   return (
     <main className="home-container w-screen">
@@ -17,7 +18,12 @@ const Home = () => {
         {loading ? 
         (<div>Loading...</div>
         ) : (
-        <PostList posts={posts} title="Some posts to peruse..."/>
+          <>
+          {users && 
+            users.map((user) => (
+              <PostList posts={user.posts}  firstName={user.firstName} lastName={user.lastName}/>
+            ))}
+          </>
         )}
     </main>
   );
