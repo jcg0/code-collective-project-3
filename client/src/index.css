@@ -37,7 +37,9 @@ form textarea[type='text'] {
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  background-color: #24331A;
+  background-color: #145C9E;
   padding: 8px;
+  border-color: white;
+  border-width: 1px;
 }
 

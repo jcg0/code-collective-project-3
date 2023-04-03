@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_FRIEND } from "../../utils/mutations";
-import { QUERY_USER, QUERY_USER_LIST, QUERY_ME } from "../../utils/queries";
+import { QUERY_USER, QUERY_USER_LIST, QUERY_ME, QUERY_POTENTIAL_FRIENDS } from "../../utils/queries";
 import { Link } from "react-router-dom";
 
 const FindFriends = () => {
@@ -9,9 +9,15 @@ const FindFriends = () => {
     update(cache, { data: { addFriend } }) {
       try {
         const { me } = cache.readQuery({ query: QUERY_ME });
+        const { potentialFriends } = cache.readQuery({ query: QUERY_POTENTIAL_FRIENDS });
         cache.writeQuery({
           query: QUERY_ME,
           data: { me:{...me, friendsList: [...me.friendsList, addFriend]}}
+        });
+        cache.writeQuery({
+          query: QUERY_POTENTIAL_FRIENDS,
+          data: { potentialFriends: {...potentialFriends.filter((friend) => friend.username !== addFriend.username)}}
+          
         });
       } catch (e) {
         console.error(e);
@@ -31,30 +37,28 @@ const FindFriends = () => {
       console.error(err);
     }
   };
-  const { loading, data: allUsers} = useQuery(QUERY_USER_LIST);
-  const { loading: meLoading, data: meData } = useQuery(QUERY_ME);
+  const { loading, data: findFriends} = useQuery(QUERY_POTENTIAL_FRIENDS);
+ 
   
-  const myFriends = meData?.me.friendsList || [];
-  
-  if (loading || meLoading) {
+  if (loading ) {
     return <div>Loading...</div>;
   }
 
 
 
-      const potentialFriends = allUsers.users.filter((friend) => {
-        if (friend.username !== meData.me.username) {
-          if(myFriends){
-            myFriends.forEach((myFriend) => {
-              if (friend.username === myFriend.username) {
-                friend = null;
-              }
-            });
-          }
+      // const potentialFriends = allUsers.users.filter((friend) => {
+      //   if (friend.username !== meData.me.username) {
+      //     if(myFriends){
+      //       myFriends.forEach((myFriend) => {
+      //         if (friend.username === myFriend.username) {
+      //           friend = null;
+      //         }
+      //       });
+      //     }
          
-          return friend;
-        }
-      });
+      //     return friend;
+      //   }
+      // });
       
     
  
@@ -63,7 +67,7 @@ const FindFriends = () => {
 
   return (
     <div>
-      {potentialFriends && potentialFriends.map((friend, index) => (
+      {findFriends && findFriends.potentialFriends.map((friend, index) => (
         
           <div key={index} className=" text-center col-12 col-xl-6">
         <ul className="text-center menu bg-primary w-56 rounded-box">
