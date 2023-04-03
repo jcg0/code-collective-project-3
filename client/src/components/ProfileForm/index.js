@@ -73,14 +73,14 @@ const ProfileForm = ({ profiles, title, loading }) => {
       {clicked ? (
         <>
           <form
-            className="flex flex-col items-center text-start"
+            className="flex flex-col items-center text-start bg-secondary-focus"
             onSubmit={handleFormSubmit}
           >
             <label className="text-4xl" htmlFor="profile_bio">
               Bio
             </label>
             <textarea
-              className="textarea bg-secondary-focus textarea-accent w-full max-w-xs"
+              className="textarea bg-secondary textarea-accent w-full max-w-xs"
               name="bio"
               id="profile_bio"
               cols="35"
@@ -94,31 +94,35 @@ const ProfileForm = ({ profiles, title, loading }) => {
               Skills
             </label>
             <input
-              className="input-md border-current bg-secondary-focus rounded input-bordered input-accent w-full max-w-xs"
+              className="input-md border-accent bg-secondary rounded input-bordered input-accent w-full max-w-xs"
               type="text"
               name="skills"
               value={profileForm.skills}
               onChange={handleInputChange}
               placeholder="Skills"
             />
-            <button type="button">add skill</button>
+            <button className="btn glass btn-wide bg-accent" type="button">
+              add skill
+            </button>
             <label className="text-4xl" htmlFor="">
               Interests
             </label>
             <input
-              className="input-md border-current bg-secondary-focus rounded input-bordered input-accent w-full max-w-xs"
+              className="input-md bg-secondary rounded input-bordered input-accent w-full max-w-xs"
               type="text"
               name="interests"
               value={profileForm.interests}
               onChange={handleInputChange}
               placeholder="Interests"
             />
-            <button type="button">Add Interest</button>
+            <button className="btn glass btn-wide bg-accent" type="button">
+              Add Interest
+            </button>
             <label className="text-4xl" htmlFor="">
               Website
             </label>
             <input
-              className="input-md border-current bg-secondary-focus rounded input-bordered input-accent w-full max-w-xs"
+              className="input-md border-accent bg-secondary rounded input-bordered input-accent w-full max-w-xs"
               type="text"
               name="websites"
               value={profileForm.websites}
@@ -129,7 +133,7 @@ const ProfileForm = ({ profiles, title, loading }) => {
               Location
             </label>
             <input
-              className="input-md border-current bg-secondary-focus rounded input-bordered input-accent w-full max-w-xs"
+              className="input-md border-accent bg-secondary rounded input-bordered input-accent w-full max-w-xs"
               type="text"
               name="location"
               value={profileForm.location}

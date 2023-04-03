@@ -4,6 +4,8 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {},
+      colors: {},
+      borderColor: "#EBCE4D",
     },
   },
   plugins: [require("daisyui")],
