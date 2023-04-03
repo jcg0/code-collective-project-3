@@ -2,12 +2,13 @@ import React from "react";
 import {
   generatePlaceholderName,
   generateRandomColor,
+  generateRandomPercent,
 } from "../../utils/helpers";
 
 const Avatar = ({ firstName, lastName }) => {
   let name = `${firstName} ${lastName}`;
   const userPlaceholder = generatePlaceholderName(name);
-  const placeholderBackground = `hsla(${generateRandomColor()}, 50%, 50%, 1)`;
+  const placeholderBackground = `hsla(${generateRandomColor()}, ${generateRandomPercent()}, ${generateRandomPercent()}, 1)`;
 
   return (
     <div
