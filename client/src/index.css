@@ -15,10 +15,19 @@
   
 }
 
-/* form input[type='text'] {
+form input[type='text'] {
   width: 300px;
-} */
+}
 
 form textarea[type='text'] {
   width: 300px;
 }
+
+#prof-btn {
+  width: 300px;
+}
+
+#int-skl-btn {
+  width: 100px;
+}
+

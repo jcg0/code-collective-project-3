@@ -73,24 +73,30 @@ const ProfileForm = ({ profiles, title, loading }) => {
       {clicked ? (
         <>
           <form
-            className="flex flex-col items-center text-start bg-secondary-focus"
+            className="flex flex-col items-center text-start bg-neutral"
             onSubmit={handleFormSubmit}
           >
-            <label className="text-4xl" htmlFor="profile_bio">
+            <label
+              className="text-4xl text-stone-200 font-extrabold"
+              htmlFor="profile_bio"
+            >
               Bio
             </label>
             <textarea
               className="textarea bg-secondary textarea-accent w-full max-w-xs"
               name="bio"
               id="profile_bio"
-              cols="35"
+              cols="30"
               rows="7"
               type="text"
               value={profileForm.bio}
               onChange={handleInputChange}
               placeholder="Add a bio"
             ></textarea>
-            <label className="text-4xl" htmlFor="">
+            <label
+              className="text-4xl text-stone-200 font-extrabold"
+              htmlFor=""
+            >
               Skills
             </label>
             <input
@@ -101,10 +107,17 @@ const ProfileForm = ({ profiles, title, loading }) => {
               onChange={handleInputChange}
               placeholder="Skills"
             />
-            <button className="btn glass btn-wide bg-accent" type="button">
+            <button
+              id="int-skl-btn"
+              className="m-4 btn glass bg-accent text-slate-950"
+              type="button"
+            >
               add skill
             </button>
-            <label className="text-4xl" htmlFor="">
+            <label
+              className="text-4xl text-stone-200 font-extrabold"
+              htmlFor=""
+            >
               Interests
             </label>
             <input
@@ -115,10 +128,17 @@ const ProfileForm = ({ profiles, title, loading }) => {
               onChange={handleInputChange}
               placeholder="Interests"
             />
-            <button className="btn glass btn-wide bg-accent" type="button">
+            <button
+              id="int-skl-btn"
+              className="m-4 btn glass bg-accent text-slate-950"
+              type="button"
+            >
               Add Interest
             </button>
-            <label className="text-4xl" htmlFor="">
+            <label
+              className="text-4xl text-stone-200 font-extrabold"
+              htmlFor=""
+            >
               Website
             </label>
             <input
@@ -129,7 +149,10 @@ const ProfileForm = ({ profiles, title, loading }) => {
               onChange={handleInputChange}
               placeholder="website"
             />
-            <label className="text-4xl" htmlFor="">
+            <label
+              className="text-4xl text-stone-200 font-extrabold"
+              htmlFor=""
+            >
               Location
             </label>
             <input
@@ -140,57 +163,65 @@ const ProfileForm = ({ profiles, title, loading }) => {
               onChange={handleInputChange}
               placeholder="Location"
             />
-            <button className="btn glass btn-wide bg-accent" type="submit">
+            <button
+              id="prof-btn"
+              className="m-4 btn glass bg-accent text-slate-950"
+              type="submit"
+            >
               save
             </button>
           </form>
         </>
       ) : (
         <>
-          <div className="pt-1 bg-secondary-focus">
-            <div className="card card-bordered bg-secondary border-white m-5 p-5 shadow-2xl shadow-black">
-              <p className="text-4xl">Bio</p>
-              <p>{profileForm.bio}</p>
+          <div className="pt-1 bg-focus">
+            <div className="card card-bordered bg-secondary border-accent m-5 p-5 shadow-2xl shadow-black">
+              <p className="text-4xl text-stone-200 font-extrabold">Bio</p>
+              <p className="text-stone-200">{profileForm.bio}</p>
             </div>
-            <div className="card card-bordered bg-secondary border-white m-5 p-5 shadow-2xl shadow-black">
-              <p className="text-4xl">Skills</p>
+            <div className="card card-bordered bg-secondary border-accent m-5 p-5 shadow-2xl shadow-black">
+              <p className="text-4xl text-stone-200 font-extrabold">Skills</p>
               <ul>
                 {/* {profileForm.skills &&
                 profileForm.skills.map((skills, index) => (
                   <li key={skills.name}>{skills.skills[index]}</li>
                 ))} */}
-                <li>{profileForm.skills}</li>
+                <li className="text-stone-200">{profileForm.skills}</li>
               </ul>
             </div>
-            <div className="card card-bordered bg-secondary border-white m-5 p-5 shadow-2xl shadow-black">
-              <p className="text-4xl">Interests</p>
+            <div className="card card-bordered bg-secondary border-accent m-5 p-5 shadow-2xl shadow-black">
+              <p className="text-4xl text-stone-200 font-extrabold">
+                Interests
+              </p>
               <ul>
                 {/* {profileForm.interests &&
                 profileForm.interests.map((interests, index) => (
                   <li key={interests.name}>{interests.interests[index]}</li>
                 ))} */}
-                <li>{profileForm.interests}</li>
+                <li className="text-stone-200">{profileForm.interests}</li>
               </ul>
             </div>
-            <div className="card card-bordered bg-secondary border-white m-5 p-5 shadow-2xl shadow-black">
-              <p className="text-4xl">Websites</p>
+            <div className="card card-bordered bg-secondary border-accent m-5 p-5 shadow-2xl shadow-black">
+              <p className="text-4xl text-stone-200 font-extrabold">Websites</p>
               <ul>
                 {/* {profileForm.websites &&
                 profileForm.websites.map((websites, index) => (
                   <li key={websites.name}>{websites.websites}</li>
                 ))} */}
                 <li>
-                  <a href={profileForm.websites}>{profileForm.websites}</a>
+                  <a className="text-stone-200" href={profileForm.websites}>
+                    {profileForm.websites}
+                  </a>
                 </li>
               </ul>
             </div>
-            <div className="card card-bordered bg-secondary border-white m-5 p-5 shadow-2xl shadow-black">
-              <p className="text-4xl">Location</p>
-              <p>{profileForm.location}</p>
+            <div className="card card-bordered bg-secondary border-accent m-5 p-5 shadow-2xl shadow-black">
+              <p className="text-4xl text-stone-200 font-extrabold">Location</p>
+              <p className="text-stone-200">{profileForm.location}</p>
             </div>
             <div className="flex flex-col items-center pb-6">
               <button
-                className="btn glass btn-wide bg-accent"
+                className="btn glass btn-wide bg-accent text-slate-950"
                 onClick={handleClick}
               >
                 edit profile

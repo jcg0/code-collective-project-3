@@ -1,11 +1,13 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import ProfileList from "../components/ProfileList";
+// import ProfileList from "../components/ProfileList";
 import Avatar from "../components/Avatar";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 import ProfileForm from "../components/ProfileForm";
+// import "../index.css";
+import prof_mountain from "../assets/images/profile_mtn.webp";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -30,11 +32,13 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="">
-        <h1 className="text-center text-6xl pt-6">
-          {userParam ? `${user.username}'s` : "Your"} profile.
-        </h1>
-        <div className="p-5 flex flex-col items-center">
+      <div className="bg-neutral">
+        <div className=" flex flex-col items-center">
+          {/* <img id="profile-mtn" src={prof_mountain} alt="" /> */}
+          <h1 className="text-center text-4xl pt-6">
+            {userParam ? `${user.username}'s` : "Your"} profile
+          </h1>
+
           <Avatar firstName={user.firstName} lastName={user.lastName} />
         </div>
 
