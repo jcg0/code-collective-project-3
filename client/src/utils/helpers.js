@@ -11,4 +11,9 @@ export function generateRandomColor() {
   let randomColor = Math.floor(Math.random() * 360);
   return randomColor;
 }
-// generate a randome color
+// generate a random color
+
+export function generateRandomPercent() {
+  let randomPercent = Math.floor(Math.random() * 100) + 1 + "%";
+  return randomPercent;
+}

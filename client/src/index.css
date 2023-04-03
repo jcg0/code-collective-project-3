@@ -15,6 +15,24 @@
   
 }
 
+
+form input[type='text'] {
+  width: 300px;
+}
+
+form textarea[type='text'] {
+  width: 300px;
+}
+
+#prof-btn {
+  width: 300px;
+}
+
+#int-skl-btn {
+  width: 100px;
+}
+
+
 .circle {
   border-radius: 50%;
   width: 100%;
@@ -22,3 +40,4 @@
   background-color: #24331A;
   padding: 8px;
 }
+
