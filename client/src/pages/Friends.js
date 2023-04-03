@@ -32,11 +32,17 @@ const Friends = () => {
   // }
 
   return (
-    <div className="flex flex-col items-center text-center bg-secondary space-y-20">
-      <h1 className="antialiased text-2xl font-extrabold">Friends List</h1>
+    <div className="flex flex-col items-center text-center bg-neutral space-y-20">
+      <div className="bg-secondary w-100">
+      <h1 className="antialiased text-2xl fs-1 text-primary-content font-extrabold rounded p-1 m-1 border border-white">Friends List</h1>
+      
+      <h2 className="antialiased text-2xl fs-3 text-primary-content font-extrabold rounded p-1 m-1 border border-white">Click on a friends name to view their profile!</h2>
+       </div>
       <FriendsList users={user.friendsList} />
-      <h1 className="antialiased text-2xl font-extrabold">Add More Friends</h1>
-      <FindFriends />
+      <div className="bg-secondary">
+      <h1 className="antialiased text-2xl text-primary-content font-extrabold rounded p-1 m-1 border border-white">Add More Friends</h1>
+      </div>
+        <FindFriends />
     </div>
   );
 };

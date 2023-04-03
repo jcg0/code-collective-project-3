@@ -41,25 +41,26 @@ const FriendsList = ({ users }) => {
 
   // debugger
   return (
-    <div className="flex flex-col items-center text-center space-y-20">
+    <div className="flex flex-wrap items-center text-center space-y-20">
       <div>
         {users &&
           users.map((friendList, index) => (
-            <div key={index} className="text-center col-12 col-xl-6">
-              <ul className="text-center menu bg-primary w-56 rounded-box">
-                <div>
+            <div key={index} className="text-center inline-flex flex-row col-12 col-xl-6">
+              <ul className="flex-1 bg-secondary inline-flex flex-row justify-around  rounded p-3 m-3 border border-accent shadow-2xl shadow-black">
+                
                   {" "}
-                  <Link className="text-center username" to={`profile/${friendList.username}`}>{friendList.username}</Link>
-                </div>
-              </ul>
-              <div class="btn-group">
+                  <Link className="text-center text-primary-content username p-1" to={`profile/${friendList.username}`}>{friendList.username}</Link>
+                  
+                
+                
                 <button
                   onClick={() => handleRemove(friendList.username)}
-                  className="btn"
+                  className="btn flex-1 bg-accent glass text-secondary-focus justify-around rounded p-1  border border-white"
                 >
                   Remove Friend
                 </button>
-              </div>
+              
+              </ul>
             </div>
           ))}
       </div>

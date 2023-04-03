@@ -69,21 +69,23 @@ const FindFriends = () => {
     <div>
       {findFriends && findFriends.potentialFriends.map((friend, index) => (
         
-          <div key={index} className=" text-center col-12 col-xl-6">
-        <ul className="text-center menu bg-primary w-56 rounded-box">
-          <div>
-            <Link className="text-center username fs-2" to={`profile/${friend.username}`}>{friend.username}</Link>
-          </div>
-        </ul>
-        <div className="btn-group">
-          <button
-            onClick={() => handleAdd(friend.username)}
+          <div key={index} className="text-center inline-flex flex-row col-12 col-xl-6">
+            <ul className="flex-1 bg-secondary inline-flex flex-row justify-around  rounded border border-accent m-3 p-3 shadow-2xl shadow-black ">
+              
+                <Link className="text-center text-primary-content username p-1" to={`profile/${friend.username}`}>{friend.username}</Link>
+              
             
-            className="btn"
-          >
-            Add Friend
-          </button>
-        </div>
+            
+              <button
+                onClick={() => handleAdd(friend.username)}
+                
+                className="btn flex-1 bg-accent glass text-secondary-focus justify-around rounded p-1  border border-white"
+              >
+                Add Friend
+              </button>
+              
+            </ul>
+        
       </div>
         
       ))}
