@@ -12,6 +12,7 @@ const Header = () => {
     navigate("/login");
   };
   return (
+
     <div className="navbar base-100 bg-secondary-focus">
       <div>
         <div className="p-1">
@@ -19,6 +20,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex-1 bg-secondary-content justify-around rounded">
+
         <p>
           
           <b className=" text-primary-content">CODE COLLECTIVE</b>
@@ -31,7 +33,7 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="Search"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
               />
             </div> */}
             <div className="dropdown dropdown-end">

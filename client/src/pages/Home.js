@@ -11,8 +11,8 @@ const Home = () => {
   console.log(users); 
 
   return (
-    <main className="home-container w-screen">
-      <div className="card bg-neutral-focus shadow-xl m-2">
+    <main className="home-container w-screen bg-secondary">
+      <div className="card">
         <PostForm />
       </div>
         {loading ? 

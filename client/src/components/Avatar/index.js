@@ -15,7 +15,7 @@ const Avatar = ({ firstName, lastName }) => {
       className="avatar placeholder"
       style={{ backgroundColor: placeholderBackground }}
     >
-      <div className="text-neutral-content bg-primary rounded-full w-24">
+      <div className="text-neutral-content bg-primary-content rounded-full w-24">
         <span className="text-3xl">{userPlaceholder}</span>
       </div>
     </div>

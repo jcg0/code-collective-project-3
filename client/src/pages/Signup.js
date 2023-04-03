@@ -43,7 +43,7 @@ const Signup = () => {
 
   return (
     <main>
-      <div className="hero min-h-screen bg-base-100">
+      <div className="hero min-h-screen bg-secondary">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl font-bold">Code Collective</h1>
@@ -123,7 +123,7 @@ const Signup = () => {
                     />
                     <div className="form-control mt-6">
                       <button
-                        className="btn btn-primary"
+                        className="btn btn-accent text-primary"
                         style={{ cursor: "pointer" }}
                         type="submit"
                       >
