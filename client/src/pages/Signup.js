@@ -56,13 +56,13 @@ const Signup = () => {
               {/* <img src={logo} alt="Code Collective logo" />
             </figure>
           </div> */}
-          <div className="card flex-shrink-0 w-auto max-w-sm shadow-2xl bg-secondary-focus glass">
+          <div className="card flex-shrink-0 w-auto max-w-sm shadow-2xl bg-secondary-focus">
             <div className="card-body">
               <div className="card-body">
                 {data ? (
                   <p>
                     Success! You may now head{" "}
-                    <Link to="/">back to the homepage.</Link>
+                    <Link to="/home">back to the homepage.</Link>
                   </p>
                 ) : (
                   <form onSubmit={handleFormSubmit} className="form-control">
