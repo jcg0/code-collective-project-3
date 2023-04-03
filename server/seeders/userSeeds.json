@@ -26,5 +26,19 @@
     "password": "password",
     "firstName": "James",
     "lastName": "Howlett"
+  },
+  {
+    "username": "Flash",
+    "email": "Flash@code-collective.com",
+    "password": "password",
+    "firstName": "Barry",
+    "lastName": "Allen"
+  },
+  {
+    "username": "GreenLantern",
+    "email": "Greenlantern@code-collective.com",
+    "password": "password",
+    "firstName": "Hal",
+    "lastName": "Jordan"
   }
 ]

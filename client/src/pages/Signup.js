@@ -28,8 +28,11 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
-    window.location.href = '/home'
+    
+    const currentURl=window.location.href
+    const newUrl = currentURl.replace('/signup', '/home')
+    // const newUrl = lessUrl + 'home' 
+    
 
     try {
       const { data } = await addUser({
@@ -37,6 +40,7 @@ const Signup = () => {
       });
 
       Auth.login(data.addUser.token);
+      window.location.href = newUrl
     } catch (e) {
       console.error(e);
     }

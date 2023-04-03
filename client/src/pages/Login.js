@@ -22,13 +22,17 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    
+    const currentURl=window.location.href
+    const newUrl = currentURl + 'home' 
+    
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-
+    
       Auth.login(data.login.token);
+      window.location.href = newUrl
     } catch (e) {
       console.error(e);
     }

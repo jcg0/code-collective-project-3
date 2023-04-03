@@ -25,5 +25,32 @@
         "avatar": "TBD", 
         "location": "Human world", 
         "websites": ["https://www.dc.com/characters/wonder-woman" ]
+    },
+    {
+        "user": "Flash", 
+        "bio": "Fastest man alive and has mastery over not just speed, but time itself, and he has often used his powers to travel though different eras and even into other dimensions.", 
+        "skills": ["Super speed", "Agility", "Time travel"], 
+        "interests": ["World peace", "Fighting injustice"], 
+        "avatar": "TBD", 
+        "location": "Human world", 
+        "websites": ["https://www.dc.com/characters/the-flash" ]
+    },
+    {
+        "user": "GreenLantern", 
+        "bio": "The first-ever human Green Lantern, one of the most legendary Lanterns to ever wield a power ring.", 
+        "skills": ["Hard light constructs", "Durability", "Flight"], 
+        "interests": ["World peace", "Fighting injustice"], 
+        "avatar": "TBD", 
+        "location": "Human world", 
+        "websites": ["https://www.dc.com/characters/the-flash" ]
+    },
+    {
+        "user": "Wolverine", 
+        "bio": "He is a mutant with animal-keen senses, enhanced physical capabilities, a powerful regenerative ability known as a healing factor, and three retractable claws in each hand.", 
+        "skills": ["Retractable Claws", "Healing factor", "Super strength"], 
+        "interests": ["World peace", "Fighting injustice"], 
+        "avatar": "TBD", 
+        "location": "Human world", 
+        "websites": ["" ]
     }
 ]
