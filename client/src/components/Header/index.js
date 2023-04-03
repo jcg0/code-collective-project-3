@@ -14,9 +14,11 @@ const Header = () => {
   return (
     <div className="navbar base-100 bg-secondary-focus">
       <div>
+        <div className="p-1">
         <b className=" flex-1 text-center circle  w-10 rounded-full text-primary-content">&#60;C/Ɔ&#62;</b>
+        </div>
       </div>
-      <div className="flex-1 bg-secondary-content justify-around ">
+      <div className="flex-1 bg-secondary-content justify-around rounded">
         <p>
           
           <b className=" text-primary-content">CODE COLLECTIVE</b>
