@@ -169,4 +169,12 @@ query Users {
       }
     }
   }
+}`;
+
+export const QUERY_POTENTIAL_FRIENDS = gql`
+query PotentialFriends {
+  potentialFriends {
+    _id
+    username
+  }
 }`

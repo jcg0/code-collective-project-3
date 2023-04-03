@@ -5,6 +5,19 @@ const ObjectId = require('mongodb').ObjectId
 
 const resolvers = {
   Query: {
+    potentialFriends: async (parent, args, context) => {
+      if (context.user) {
+        const friendsList = await User.findOne({
+          _id: context.user._id,
+        });
+        console.log(friendsList.friendsList);
+        const potentialFriends = await User.find({
+          _id: { $nin: friendsList.friendsList, $ne: context.user._id },
+        });
+        return potentialFriends;
+      }
+      throw new AuthenticationError("Please log in to see potential friends");
+    },
     users: async () => {
       return User.find()
         .populate("posts")
@@ -266,7 +279,11 @@ const resolvers = {
       }
       throw new AuthenticationError("Please log in to delete a post");
     },
+
+    
   },
 };
+
+
 
 module.exports = resolvers;

@@ -9,7 +9,7 @@ const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
-    navigate("/login");
+    navigate("/");
   };
   return (
 
