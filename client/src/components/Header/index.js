@@ -42,15 +42,15 @@ const Header = () => {
                 tabIndex={0}
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
-                <Link to= "/">Home</Link>
+                <Link to= "/home">Home</Link>
 
                 <Link to="/profile/me">Your Profile</Link>
                
                 <Link to="/friends">Friends</Link>
-                <li>
-                  <a>Chat</a>
-                </li>
-                <Link className="btn btn-lg btn-light m-2" onClick={logout}>
+                
+                <Link to='/inprogress'>Chat</Link>
+                
+                <Link className="btn btn-md btn-light m-2" onClick={logout}>
                   Logout
                 </Link>
               </ul>

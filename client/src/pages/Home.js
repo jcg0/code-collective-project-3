@@ -21,7 +21,7 @@ const Home = () => {
           <>
           {users && 
             users.map((user) => (
-              <PostList posts={user.posts}  firstName={user.firstName} lastName={user.lastName}/>
+              <PostList posts={user.posts}  firstName={user.firstName} lastName={user.lastName} username={user.username}/>
             ))}
           </>
         )}
