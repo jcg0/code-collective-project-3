@@ -60,6 +60,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    potentialFriends: [User]
     addUser(
       username: String!
       email: String!
@@ -97,7 +98,7 @@ const typeDefs = gql`
     removeComment(postId: ID!, commentId: ID!): Post
     addFriend(friendName: String!): User
     removeFriend(friendName: String!): User
-    potentialFriends: [User]
+    
   }
 `;
 

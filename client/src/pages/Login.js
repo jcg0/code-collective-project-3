@@ -22,7 +22,7 @@ const Login = (props) => {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    
     const currentURl=window.location.href
     const newUrl = currentURl + 'home' 
     

@@ -35,9 +35,9 @@ const FriendsList = ({ users }) => {
   };
   console.log(users);
 
-  // if (!users.length) {
-  //   return <h3>Add Some Friends!</h3>;
-  // }
+  if (!users.length) {
+    return <h3 className=" text-secondary-focus">Add Some Friends!</h3>;
+  }
 
   // debugger
   return (
