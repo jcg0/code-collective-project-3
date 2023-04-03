@@ -40,10 +40,10 @@ const CommentForm = ({ postId }) => {
   return (
     <div className="collapse rounded-xl">
       <input type="checkbox" className="peer" />
-      <div className="collapse-title bg-primary text-primary-content text-center">
+      <div className="collapse-title bg-accent text-primary text-center">
       +
       </div>
-      <div className="collapse-content bg-primary text-primary-content">
+      <div className="collapse-content bg-accent text-primary-content">
         <form onSubmit={handleFormSubmit}>
           <textarea
             name="commentText"
@@ -54,7 +54,7 @@ const CommentForm = ({ postId }) => {
             onChange={handleCommentChange}
           />
           <label className="label">
-            <span className="label-text-alt text-primary-content">{characterCount}/280</span>
+            <span className="label-text-alt text-primary">{characterCount}/280</span>
           </label>
           <button
             className="btn btn-secondary btn-wide justify-center"

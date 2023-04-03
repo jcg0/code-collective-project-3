@@ -45,9 +45,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className="bg-secondary">
           <Header />
-          <div className="md:container md:mx-auto">
+          <div className="">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
