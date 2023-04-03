@@ -48,10 +48,10 @@ const PostList = ({ posts, firstName, lastName, username }) => {
           .sort((post) => parseFloat(post.createdAt - 1))
           .map((post) => (
             <div className="card shadow-xl m-2" key={post._id}>
-              <div className="card-body bg-primary-content rounded-xl">
+              <div className="card-body bg-secondary-focus rounded-xl">
                 <Avatar firstName={firstName} lastName={lastName} size="sm" />
                 <h3 className="card-title username ">{post.postAuthor}</h3>
-                <p className="bg-white p-3 rounded-md text-md">
+                <p className="bg-white p-3 rounded-md text-md text-primary">
                   <code>{post.postContent}</code>
                 </p>
                 <p className="text-xs">

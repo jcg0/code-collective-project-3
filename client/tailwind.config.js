@@ -23,7 +23,7 @@ module.exports = {
           neutral: "#F6F0E0" 
         }
       },
-      "myTheme", "cupcake" ],
+      "myTheme"],
     base: true,
     utils: true,
     logs: true,
