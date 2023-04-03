@@ -180,24 +180,24 @@ const ProfileList = ({ profiles, title, loading }) => {
           <div>
             <ul>
               {profileForm.skills &&
-                profileForm.skills.map((skills, index) => (
-                  <li key={skills.name}>{profileForm.skills[index]}</li>
+                profileForm.skills.map((profile, index) => (
+                  <li key={profile.name}>{profile.skills[index]}</li>
                 ))}
             </ul>
           </div>
           <div>
             <ul>
               {profileForm.interests &&
-                profileForm.interests.map((interests, index) => (
-                  <li key={interests.name}>{profileForm.interests[index]}</li>
+                profileForm.interests.map((profile, index) => (
+                  <li key={profile.name}>{profile.interests[index]}</li>
                 ))}
             </ul>
           </div>
           <div>
             <ul>
               {profileForm.websites &&
-                profileForm.websites.map((websites, index) => (
-                  <li key={websites.name}>{profileForm.websites}</li>
+                profileForm.websites.map((profile, index) => (
+                  <li key={profile.name}>{profile.websites}</li>
                 ))}
             </ul>
           </div>

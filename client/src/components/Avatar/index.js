@@ -5,17 +5,16 @@ import {
 } from "../../utils/helpers";
 
 const Avatar = ({ firstName, lastName }) => {
-  
   let name = `${firstName} ${lastName}`;
   const userPlaceholder = generatePlaceholderName(name);
-  const placeholderBackground = `hsl$(${generateRandomColor()})`;
+  const placeholderBackground = `hsla(${generateRandomColor()}, 50%, 50%, 1)`;
 
   return (
     <div
-      className="avatar placeholder"
+      className="avatar rounded-full placeholder"
       style={{ backgroundColor: placeholderBackground }}
     >
-      <div className="text-neutral-content bg-primary rounded-full w-24">
+      <div className="text-neutral-content  w-24">
         <span className="text-3xl">{userPlaceholder}</span>
       </div>
     </div>

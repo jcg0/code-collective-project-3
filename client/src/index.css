@@ -14,3 +14,11 @@
   font-weight: bold;
   
 }
+
+/* form input[type='text'] {
+  width: 300px;
+} */
+
+form textarea[type='text'] {
+  width: 300px;
+}

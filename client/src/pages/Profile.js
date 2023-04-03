@@ -5,6 +5,7 @@ import ProfileList from "../components/ProfileList";
 import Avatar from "../components/Avatar";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
+import ProfileForm from "../components/ProfileForm";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -29,13 +30,17 @@ const Profile = () => {
 
   return (
     <div>
-      <div>
+      <div className="">
         <h1 className="text-center text-6xl pt-6">
           {userParam ? `${user.username}'s` : "Your"} profile.
         </h1>
-        <Avatar firstName={user.firstName} lastName={user.lastName} />
+        <div className="p-5 flex flex-col items-center">
+          <Avatar firstName={user.firstName} lastName={user.lastName} />
+        </div>
+
         <div>
-          <ProfileList profiles={user.profile} loading={loading} />
+          {/* <ProfileList profiles={user.profile} loading={loading} /> */}
+          <ProfileForm profiles={user.profile} loading={loading} />
         </div>
       </div>
     </div>
