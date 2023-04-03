@@ -12,22 +12,28 @@ const Header = () => {
     navigate("/login");
   };
   return (
-    <div className="navbar base-100 bg-primary">
-      <div className="flex-1">
+    <div className="navbar base-100 bg-secondary-focus">
+      <div>
+        <div className="p-1">
+        <b className=" flex-1 text-center circle  w-10 rounded-full text-primary-content">&#60;C/Ɔ&#62;</b>
+        </div>
+      </div>
+      <div className="flex-1 bg-secondary-content justify-around rounded">
         <p>
-          <b>CC</b>
+          
+          <b className=" text-primary-content">CODE COLLECTIVE</b>
         </p>
       </div>
       <div className="flex-none gap-2">
         {Auth.loggedIn() ? (
           <>
-            <div className="form-control">
+            {/* <div className="form-control">
               <input
                 type="text"
                 placeholder="Search"
                 className="input input-bordered"
               />
-            </div>
+            </div> */}
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
