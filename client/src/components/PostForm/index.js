@@ -21,7 +21,6 @@ const PostForm = () => {
         });
       } catch (e) {
         console.error(e);
-        console.log("its in the update");
       }
     },
   });
@@ -37,7 +36,6 @@ const PostForm = () => {
       setFormContent("");
     } catch (err) {
       console.error(err);
-      console.log("form submit is the issue");
     }
   };
 
@@ -52,7 +50,7 @@ const PostForm = () => {
 
   return (
     <div className="form-control p-4 m-2">
-      <h2 className="pb-2 text-secondary">
+      <h2 className="pb-2 text-primary-content">
         <b>What's got your gears going?</b>
       </h2>
       {Auth.loggedIn() ? (
@@ -63,14 +61,14 @@ const PostForm = () => {
               type="text"
               value={formState}
               placeholder="Type here"
-              className="textarea textarea-bordered w-full max-w-screen-md bg-white"
+              className="textarea textarea-bordered w-full max-w-screen-md bg-white text-black"
               onChange={handleChange}
             />
             <label className="label">
-              <span className="label-text-alt text-secondary">{characterCount}/280</span>
+              <span className="label-text-alt text-primary-content">{characterCount}/280</span>
             </label>
             <button
-              className="btn btn-secondary btn-block content-center"
+              className="btn btn-accent btn-block content-center text-primary"
               type="submit"
             >
               Post
@@ -91,7 +89,7 @@ const PostForm = () => {
                       d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <span>{error.message}</span>
+                  <span>I'm sorry; there was a problem submitting your post.</span>
                 </div>
               </div>
             )}
@@ -99,7 +97,7 @@ const PostForm = () => {
         </>
       ) : (
         <form>
-          <div className="alert alert-warning shadow-lg">
+          <div className="alert alert-warning">
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

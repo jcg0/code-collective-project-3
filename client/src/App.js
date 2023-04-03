@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import Friends from "./pages/Friends";
 import FriendsList from "./components/Friends/FriendsList";
+import InProgress from "./pages/InProgress"; 
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -45,17 +46,18 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className="bg-primary">
           <Header />
-          <div className="md:container md:mx-auto">
+          <div className="md:container md:mx-auto bg-primary">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Login />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/profile/me" element={<Profile />} />
               <Route path="/profile/:username" element={<Profile />} />
               <Route path="/friends" element={<Friends />} />
               <Route path="/friends/profile/:username" element={<Profile />} />
+              <Route path="/inprogress" element={<InProgress />} />
             </Routes>
           </div>
           {/* <Footer /> */}

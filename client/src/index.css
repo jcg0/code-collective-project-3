@@ -15,6 +15,7 @@
   
 }
 
+
 form input[type='text'] {
   width: 300px;
 }
@@ -29,5 +30,14 @@ form textarea[type='text'] {
 
 #int-skl-btn {
   width: 100px;
+}
+
+
+.circle {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #24331A;
+  padding: 8px;
 }
 

@@ -12,22 +12,30 @@ const Header = () => {
     navigate("/login");
   };
   return (
-    <div className="navbar base-100 bg-primary">
-      <div className="flex-1">
+
+    <div className="navbar base-100 bg-secondary-focus">
+      <div>
+        <div className="p-1">
+        <b className=" flex-1 text-center circle  w-10 rounded-full text-primary-content">&#60;C/Ɔ&#62;</b>
+        </div>
+      </div>
+      <div className="flex-1 bg-secondary-content justify-around rounded">
+
         <p>
-          <b>CC</b>
+          
+          <b className=" text-primary-content">CODE COLLECTIVE</b>
         </p>
       </div>
       <div className="flex-none gap-2">
         {Auth.loggedIn() ? (
           <>
-            <div className="form-control">
+            {/* <div className="form-control">
               <input
                 type="text"
                 placeholder="Search"
-                className="input input-bordered"
+                className="input input-bordered bg-white"
               />
-            </div>
+            </div> */}
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
@@ -38,15 +46,15 @@ const Header = () => {
                 tabIndex={0}
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
-                <Link to= "/">Home</Link>
+                <Link to= "/home">Home</Link>
 
                 <Link to="/profile/me">Your Profile</Link>
                
                 <Link to="/friends">Friends</Link>
-                <li>
-                  <a>Chat</a>
-                </li>
-                <Link className="btn btn-lg btn-light m-2" onClick={logout}>
+                
+                <Link to='/inprogress'>Chat</Link>
+                
+                <Link className="btn btn-md btn-light m-2" onClick={logout}>
                   Logout
                 </Link>
               </ul>
