@@ -29,7 +29,7 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    window.location.href = '/home'
+    // window.location.href = '/home'
 
     try {
       const { data } = await addUser({
