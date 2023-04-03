@@ -19,7 +19,7 @@ const Header = () => {
         <b className=" flex-1 text-center circle  w-10 rounded-full text-primary-content">&#60;C/Ɔ&#62;</b>
         </div>
       </div>
-      <div className="flex-1 bg-secondary-content justify-around rounded">
+      <div className="flex-1 bg-secondary justify-around rounded p-1 m-1 border border-white">
 
         <p>
           
@@ -39,7 +39,7 @@ const Header = () => {
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src={process.env.PUBLIC_URL + '/dropdown.png'} />
+                  <img src={process.env.PUBLIC_URL + '/dropdown-light.png'} />
                 </div>
               </label>
               <ul
@@ -62,14 +62,14 @@ const Header = () => {
           </>
         ) : (
           <>
-            <div className="navbar-end">
+            <div className="navbar-end ">
               <Link to="/signup">
-                <div className="btn">Signup</div>
+                <div className="btn bg-secondary text-primary-content p-1 m-1">Signup</div>
               </Link>
             </div>
             <div className="navbar-end">
-              <Link to="/login">
-                <div className="btn">Login</div>
+              <Link to="/">
+                <div className="btn bg-secondary text-primary-content p-1">Login</div>
               </Link>
             </div>
           </>

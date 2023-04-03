@@ -89,7 +89,7 @@ const Login = (props) => {
                     />
                     <div className="form-control mt-6">
                       <button
-                        className="btn btn-primary"
+                        className="btn btn-primary bg-secondary"
                         style={{ cursor: "pointer" }}
                         type="submit"
                       >
