@@ -13,7 +13,7 @@ const Header = () => {
   };
   return (
 
-    <div className="navbar bg-secondary-focus">
+    <div className="navbar base-100 bg-secondary-focus">
       <div>
         <div className="p-1">
         <b className=" flex-1 text-center circle  w-10 rounded-full text-primary-content">&#60;C/Ɔ&#62;</b>
@@ -26,7 +26,7 @@ const Header = () => {
           <b className=" text-primary-content">CODE COLLECTIVE</b>
         </p>
       </div>
-      <div className="flex-none">
+      <div className="flex-none gap-2">
         {Auth.loggedIn() ? (
           <>
             {/* <div className="form-control">
