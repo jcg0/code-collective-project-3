@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -6,6 +6,38 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
+    firstName: String
+    lastName: String
+    profile: Profile
+    posts: [Post]!
+    friendsList: [User]
+  }
+
+  type Profile {
+    _id: ID!
+    bio: String!
+    skills: [String]
+    interests: [String]
+    # avatar: String
+    location: String
+    websites: [String]
+    # username: User
+    # friendsList: [User]
+  }
+
+  type Post {
+    _id: ID
+    postContent: String
+    postAuthor: String
+    createdAt: String
+    comments: [Comment]!
+  }
+
+  type Comment {
+    _id: ID
+    commentText: String
+    commentAuthor: String
+    createdAt: String
   }
 
   type Auth {
@@ -17,11 +49,56 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     me: User
+    # getAllProfiles(username: String!): [Profile]!
+    # getProfileById(profileId: ID!): [Profile]
+    userPosts(postAuthor: String!): [Post]!
+    posts: [Post]
+    # friendsList: [User]!
+    post(postId: ID!): Post
+    potentialFriends: [User]
+    
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    potentialFriends: [User]
+    addUser(
+      username: String!
+      email: String!
+      password: String!
+      firstName: String!
+      lastName: String!
+    ): Auth
     login(email: String!, password: String!): Auth
+    # addProfile(
+    #   bio: String!
+    #   skills: [String]
+    #   interests: [String]
+    #   avatar: String
+    #   websites: [String]
+    # )
+    updateProfile(
+      # email: String!,
+      # user: String!,
+      bio: String!
+      skills: [String]!
+      interests: [String]!
+      # avatar: String!
+      websites: [String]!
+      location: String!
+    ): Profile
+    addPost(postContent: String!): Post
+    updatePost(id: ID!, postContent: String!): Post
+    removePost(postId: ID!): Post
+    addComment(
+      postId: ID!
+      commentText: String! 
+      # commentAuthor: String!
+    ): Post
+    updateComment(postId: ID!, commentId: ID!, commentText: String!): Post
+    removeComment(postId: ID!, commentId: ID!): Post
+    addFriend(friendName: String!): User
+    removeFriend(friendName: String!): User
+    
   }
 `;
 

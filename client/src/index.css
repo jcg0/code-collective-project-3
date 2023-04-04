@@ -1,1 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .custom-profile-input-size{
+  height: 150px;
+  width: 200px;
+  overflow-wrap: break-word;
+} */
+
+.username{
+  
+  font-size: larger;
+  font-weight: bold;
+  
+}
+
+
+form input[type='text'] {
+  width: 300px;
+}
+
+form textarea[type='text'] {
+  width: 300px;
+}
+
+#prof-btn {
+  width: 300px;
+}
+
+#int-skl-btn {
+  width: 100px;
+}
+
+
+.circle {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #145C9E;
+  padding: 8px;
+  border-color: white;
+  border-width: 1px;
+}
 
