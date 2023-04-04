@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/client";
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS } from "../../utils/queries";
 import Auth from "../../utils/auth";
-// import { addTypenameToDocument } from "@apollo/client/utilities";
 
 const PostForm = () => {
   const [formState, setFormContent] = useState("");
@@ -61,7 +60,7 @@ const PostForm = () => {
               type="text"
               value={formState}
               placeholder="Type here"
-              className="textarea textarea-bordered w-full max-w-screen-md bg-white text-black"
+              className="textarea textarea-bordered bg-white text-black"
               onChange={handleChange}
             />
             <label className="label">
