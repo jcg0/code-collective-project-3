@@ -14,7 +14,11 @@ const FriendsList = ({ users }) => {
           data: {
             me: {
               ...me,
-              friendsList: {...me.friendsList.filter((friend) => friend.username !== removeFriend.username)},
+              friendsList: {
+                ...me.friendsList.filter(
+                  (friend) => friend.username !== removeFriend.username
+                ),
+              },
             },
           },
         });
@@ -45,21 +49,24 @@ const FriendsList = ({ users }) => {
       <div>
         {users &&
           users.map((friendList, index) => (
-            <div key={index} className="text-center inline-flex flex-row col-12 col-xl-6">
-              <ul className="flex-1 bg-secondary inline-flex flex-row justify-around  rounded p-3 m-3 border border-accent shadow-2xl shadow-black">
-                
-                  {" "}
-                  <Link className="text-center text-primary-content username p-1" to={`profile/${friendList.username}`}>{friendList.username}</Link>
-                  
-                
-                
+            <div
+              key={index}
+              className="text-center inline-flex flex-row col-12 col-xl-6"
+            >
+              <ul className="flex-1 bg-secondary inline-flex flex-row justify-around rounded p-3 m-3 border border-accent shadow-2xl shadow-black">
+                {" "}
+                <Link
+                  className="text-center text-primary-content username p-1"
+                  to={`profile/${friendList.username}`}
+                >
+                  {friendList.username}
+                </Link>
                 <button
                   onClick={() => handleRemove(friendList.username)}
                   className="btn flex-1 bg-accent glass text-secondary-focus justify-around rounded p-1  border border-white"
                 >
                   Remove Friend
                 </button>
-              
               </ul>
             </div>
           ))}

@@ -16,7 +16,7 @@ import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import Friends from "./pages/Friends";
 import FriendsList from "./components/Friends/FriendsList";
-import InProgress from "./pages/InProgress"; 
+import InProgress from "./pages/InProgress";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -48,7 +48,7 @@ function App() {
       <Router>
         <div className="bg-secondary">
           <Header />
-          <div className="bg-primary">
+          <div className="bg-secondary">
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/home" element={<Home />} />

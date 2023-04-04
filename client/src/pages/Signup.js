@@ -28,11 +28,10 @@ const Signup = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    
-    const currentURl=window.location.href
-    const newUrl = currentURl.replace('/signup', '/home')
-    // const newUrl = lessUrl + 'home' 
-    
+
+    const currentURl = window.location.href;
+    const newUrl = currentURl.replace("/signup", "/home");
+    // const newUrl = lessUrl + 'home'
 
     try {
       const { data } = await addUser({
@@ -40,7 +39,7 @@ const Signup = () => {
       });
 
       Auth.login(data.addUser.token);
-      window.location.href = newUrl
+      window.location.href = newUrl;
     } catch (e) {
       console.error(e);
     }
@@ -51,8 +50,10 @@ const Signup = () => {
       <div className="hero min-h-screen bg-base-100">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl font-bold">Code Collective</h1>
-            <p className="py-6">
+            <h1 className="text-4xl font-bold text-slate-950">
+              Code Collective
+            </h1>
+            <p className="py-6 text-2xl text-slate-950">
               A great way to keep in touch with your fellow bootcamp student!
             </p>
           </div>
@@ -75,7 +76,7 @@ const Signup = () => {
                       <span className="label-text">Username</span>
                     </label>
                     <input
-                      className="input input-bordered"
+                      className="input text-primary input-bordered"
                       placeholder="username"
                       name="username"
                       type="text"
@@ -86,7 +87,7 @@ const Signup = () => {
                       <span className="label-text">Email</span>
                     </label>
                     <input
-                      className="input input-bordered"
+                      className="input text-primary input-bordered"
                       placeholder="email"
                       name="email"
                       type="email"
@@ -97,7 +98,7 @@ const Signup = () => {
                       <span className="label-text">First Name</span>
                     </label>
                     <input
-                      className="input input-bordered"
+                      className="input text-primary input-bordered"
                       placeholder="first name"
                       name="firstName"
                       type="text"
@@ -108,7 +109,7 @@ const Signup = () => {
                       <span className="label-text">Last Name</span>
                     </label>
                     <input
-                      className="input input-bordered"
+                      className="input text-primary input-bordered"
                       placeholder="last name"
                       name="lastName"
                       type="text"
@@ -119,7 +120,7 @@ const Signup = () => {
                       <span className="label-text">Password</span>
                     </label>
                     <input
-                      className="input input-bordered"
+                      className="input text-primary input-bordered"
                       placeholder="******"
                       name="password"
                       type="password"
