@@ -49,7 +49,7 @@ const PostList = ({ posts, firstName, lastName, username }) => {
           .map((post) => (
             <div className="card shadow-xl m-2" key={post._id}>
               <div className="card-body bg-secondary-focus rounded-xl">
-                <Avatar firstName={firstName} lastName={lastName} size="sm" />
+                <Avatar firstName={firstName} lastName={lastName} className="avatar rounded-full placeholder" />
                 <h3 className="card-title username ">{post.postAuthor}</h3>
                 <p className="bg-white p-3 rounded-md text-md text-primary">
                   <code>{post.postContent}</code>
@@ -57,7 +57,7 @@ const PostList = ({ posts, firstName, lastName, username }) => {
                 <p className="text-xs">
                   This thought occurred {post.createdAt}
                 </p>
-                <div className="card-actions">
+                <div className="">
                   <CommentsList comments={post.comments} postId={post._id} />
                 </div>
                 {user.username === post.postAuthor &&

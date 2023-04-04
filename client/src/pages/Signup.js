@@ -48,7 +48,7 @@ const Signup = () => {
 
   return (
     <main>
-      <div className="hero min-h-screen bg-secondary">
+      <div className="hero min-h-screen bg-base-100">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl font-bold">Code Collective</h1>
@@ -61,7 +61,7 @@ const Signup = () => {
               {/* <img src={logo} alt="Code Collective logo" />
             </figure>
           </div> */}
-          <div className="card flex-shrink-0 w-auto max-w-sm shadow-2xl bg-secondary-focus">
+          <div className="card flex-shrink-0 shadow-2xl bg-secondary-focus">
             <div className="card-body">
               <div className="card-body">
                 {data ? (

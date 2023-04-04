@@ -11,8 +11,8 @@ const Home = () => {
   console.log(users); 
 
   return (
-    <main className="home-container w-screen bg-secondary">
-      <div className="card">
+    <main className="home-container bg-secondary">
+      <div className="card justify-center object-center">
         <PostForm />
       </div>
         {loading ? 
