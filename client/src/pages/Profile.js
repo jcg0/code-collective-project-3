@@ -31,15 +31,19 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <div className="bg-neutral">
+    <div className="">
+      <div className="bg-secondary">
         <div className=" flex flex-col items-center">
           {/* <img id="profile-mtn" src={prof_mountain} alt="" /> */}
-          <h1 className="text-center text-4xl pt-6">
+          <h1 className="text-center text-6xl text-stone-200 font-extrabold pt-6 m-4">
             {userParam ? `${user.username}'s` : "Your"} profile
           </h1>
 
-          <Avatar firstName={user.firstName} lastName={user.lastName} />
+          <Avatar
+            className=""
+            firstName={user.firstName}
+            lastName={user.lastName}
+          />
         </div>
 
         <div>

@@ -8,16 +8,14 @@ import {
 const Avatar = ({ firstName, lastName }) => {
   let name = `${firstName} ${lastName}`;
   const userPlaceholder = generatePlaceholderName(name);
-  const placeholderBackground = `hsla(${generateRandomColor()}, ${generateRandomPercent()}, ${generateRandomPercent()}, 1)`;
+  // const placeholderBackground = `hsla(${generateRandomColor()}, ${generateRandomPercent()}, ${generateRandomPercent()}, 1)`;
 
   return (
     <div
-      className="avatar rounded-full placeholder"
-      style={{ backgroundColor: placeholderBackground }}
+      className="avatar bg-accent place-content-center w-48 h-48 rounded-full placeholder grid grid-cols"
+      // style={{ backgroundColor: placeholderBackground }}
     >
-      <div className="text-neutral-content  w-24">
-        <span className="text-3xl">{userPlaceholder}</span>
-      </div>
+      <p className="text-6xl text-slate-950">{userPlaceholder}</p>
     </div>
   );
 };

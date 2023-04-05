@@ -48,7 +48,7 @@ const PostForm = () => {
   };
 
   return (
-    <div className="form-control p-4 m-2">
+    <div className="form-control p-4 m-2 ">
       <h2 className="pb-2 text-primary-content">
         <b>What's got your gears going?</b>
       </h2>
@@ -64,7 +64,9 @@ const PostForm = () => {
               onChange={handleChange}
             />
             <label className="label">
-              <span className="label-text-alt text-primary-content">{characterCount}/280</span>
+              <span className="label-text-alt text-primary-content">
+                {characterCount}/280
+              </span>
             </label>
             <button
               className="btn btn-accent btn-block content-center text-primary"
@@ -88,7 +90,9 @@ const PostForm = () => {
                       d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                  <span>I'm sorry; there was a problem submitting your post.</span>
+                  <span>
+                    I'm sorry; there was a problem submitting your post.
+                  </span>
                 </div>
               </div>
             )}
@@ -132,7 +136,6 @@ const PostForm = () => {
         </form>
       )}
     </div>
-
   );
 };
 
